@@ -1,0 +1,2 @@
+--use shopping_app;
+--select * from account;
