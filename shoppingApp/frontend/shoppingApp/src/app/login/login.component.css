@@ -1,0 +1,40 @@
+@charset "utf-8";
+
+
+div.main{
+/* background: radial-gradient(ellipse at center, #edf1f5 1%, #14171a 95%);  */
+background-color: black;
+height:calc(100vh);
+width:100%;
+}
+
+.logo{
+    padding-bottom: 20px;
+    font-family: "Lato", sans-serif;
+    color: aquamarine;
+}
+
+
+a {
+	color:aquamarine;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+.span input{
+    background-color: red;
+}
+
+div.span{
+    font-family: "Lato", sans-serif;
+
+}
+
+
+
+div.container{
+    padding-top: 200px;
+    width: 30%;
+}

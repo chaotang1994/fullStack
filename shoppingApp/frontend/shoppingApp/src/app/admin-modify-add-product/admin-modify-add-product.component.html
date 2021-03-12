@@ -1,0 +1,90 @@
+<div class="page">
+    <div class="back_icon">
+        <span (click)="backClicked()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor" class="bi bi-arrow-left-short" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z"/>
+            </svg>
+        </span>
+    </div>
+
+
+    <!-- <ngb-alert #selfClosingAlert *ngIf="successMessage" type="success" (closed)="successMessage = ''">{{ successMessage }}
+    </ngb-alert> -->
+
+   <!-- {{admin_id}} -->
+    <div class="container">
+        <h2 style="text-decoration: none;">Add New Product</h2>
+
+        <form [formGroup]="addProductForm" (ngSubmit)="onSubmit()">
+            <div class="from-group">
+                <label for="product_name">Product Name:</label>
+                <input type="text" formControlName="product_name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.product_name.errors }">
+                <div *ngIf="submitted && f.product_name.errors" class="invalid-feedback">
+                    <div *ngIf="f.product_name.errors.required">Name is required</div>
+                </div>
+            </div>
+
+
+            <div class="from-group ">
+                <label for="product_quantity">Product Quantity:</label>
+                <input type="number" formControlName="product_quantity" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.product_quantity.errors }">
+                <div *ngIf="submitted && f.product_quantity.errors" class="invalid-feedback">
+                    <div *ngIf="f.product_quantity.errors.required">Quantity is required</div>
+                </div>
+            </div>
+
+  
+
+            <div class="from-group ">
+                <label for="product_price">Product Price:</label>
+                <input type="number" formControlName="product_price" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.product_price.errors }">
+                <div *ngIf="submitted && f.product_price.errors" class="invalid-feedback">
+                    <div *ngIf="f.product_price.errors.required">Price is required</div>
+                </div>
+            </div>
+
+        
+        <div class="row">
+             <div class="from-group col-4">
+                <label for="product_image">Choose image file:</label>
+                <input type="file"  class="form-control-file" (change)="onFileChange($event)" [ngClass]="{ 'is-invalid': submitted && f.product_image.errors }">
+                <div *ngIf="submitted && f.product_image.errors" class="invalid-feedback">
+                    <div *ngIf="f.product_image.errors.required">File is required.</div>
+                </div>
+            </div> 
+
+            <div class="from-group col-4">
+                <label for="produt_category">Product Category:</label>
+                <select formControlName="product_category" class=“form-control” [ngClass]="{ 'is-invalid': submitted && f.product_category.errors }">
+                    <option value="">Choose your category</option>
+                    <option *ngFor="let category of Category" [ngValue]=category >{{category}}</option>
+                </select>
+                <div *ngIf="submitted && f.product_category.errors" class="invalid-feedback">
+                    <div *ngIf="f.product_category.errors.required">category is required</div>
+                </div>
+            </div>
+
+            <div class="from-group col-4">
+                <label for="product_condition">Product Condition:</label>
+                <select formControlName="product_condition" class=“form-control” [ngClass]="{ 'is-invalid': submitted && f.product_condition.errors }">
+                    <option value="">Choose your condition</option>
+                    <option *ngFor="let condition of Condition" [ngValue]=condition >{{condition}}</option>
+                </select>
+                <div *ngIf="submitted && f.product_condition.errors" class="invalid-feedback">
+                    <div *ngIf="f.product_condition.errors.required">condition is required</div>
+                </div>
+            </div>
+
+        </div>
+
+            <div class="from-group">
+                <button class="submit-btn" ><span>Submit</span></button>
+            </div>
+        
+
+        </form>
+    </div>
+
+    
+
+</div>

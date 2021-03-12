@@ -1,12 +1,15 @@
 package com.example.ShoppingApp.model;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import com.example.ShoppingApp.entity.ProductEntity;
 
 public class ShoppingCart {
 	
 	private int id;
 	private int totalPrice;
-	private List<Product> productList;
+	private List<Product> product= new ArrayList<>();
 	
 	
 
@@ -22,12 +25,13 @@ public class ShoppingCart {
 	public void setTotalPrice(int totalPrice) {
 		this.totalPrice = totalPrice;
 	}
-	public List<Product> getProductList() {
-		return productList;
+	public List<Product> getProduct() {
+		return product;
 	}
-	public void setProductList(List<Product> productList) {
-		this.productList = productList;
+	public void setProduct(List<Product> product) {
+		this.product = product;
 	}
+
 	
 
 }

@@ -1,5 +1,15 @@
 package com.example.ShoppingApp.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import com.example.ShoppingApp.entity.AdminEntity;
+import com.example.ShoppingApp.entity.ShoppingCartEntity;
+
 public class Product {
 	
 	private int id;
@@ -7,9 +17,20 @@ public class Product {
 	private String category;
 	private int quantity;
 	private String condition;
+	private int price;
 	private String imgURL;
-	
 
+	private List<ShoppingCart> shoppingCart = new ArrayList<>();
+
+	private AdminEntity adminEntity;
+
+
+	public int getPrice() {
+		return price;
+	}
+	public void setPrice(int price) {
+		this.price = price;
+	}
 	public int getId() {
 		return id;
 	}
@@ -40,14 +61,28 @@ public class Product {
 	public void setCondition(String condition) {
 		this.condition = condition;
 	}
-	public String getimgURL() {
+
+	public String getImgURL() {
 		return imgURL;
 	}
-	public void setUrl(String imgURL) {
+	public void setImgURL(String imgURL) {
 		this.imgURL = imgURL;
 	}
+
 	
-	
+	public List<ShoppingCart> getShoppingCart() {
+		return shoppingCart;
+	}
+	public void setShoppingCart(List<ShoppingCart> shoppingCart) {
+		this.shoppingCart = shoppingCart;
+	}
+	public AdminEntity getAdminEntity() {
+		return adminEntity;
+	}
+	public void setAdminEntity(AdminEntity adminEntity) {
+		this.adminEntity = adminEntity;
+	}
+
 	
 
 }

@@ -1,1 +1,27 @@
-<p>shopping-cart works!</p>
+<div class="content">
+
+  <button type="button" class="btn btn-primary" (click)="backClicked()">BACK</button>
+  <div class="container">
+      <div class="row">
+        <div [ngStyle]="setMessageStyles()" *ngIf="emptyCart">{{message}}</div>
+        <div class="col-sm-3 column p-3" *ngFor="let product of products;">
+          <div class="card" style="width: 16rem; " >
+            <img class="card-img-top card-img-top-250 one" src="..." alt="{{product.name}}">
+
+            <div class="card-body">
+              <h5 class="card-title">{{product.name}}</h5>
+              <p class="card-text">
+                CATAGORY: {{product.category}} 
+                QUANTITY: {{product.quantity}}
+                CONDITION: {{product.condition}}
+              </p>
+            
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="block" [disabled]="emptyCart">CHECK OUT</button>
+    </div>
+
+</div>

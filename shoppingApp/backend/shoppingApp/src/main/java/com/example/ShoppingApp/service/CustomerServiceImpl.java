@@ -5,7 +5,10 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.ShoppingApp.dao.CustomerDAO;
+import com.example.ShoppingApp.exception.EmailNotExits;
+import com.example.ShoppingApp.exception.InvalidPasswordOrUsername;
 import com.example.ShoppingApp.model.Customer;
+import com.example.ShoppingApp.security.PasswordEncode;
 
 @Service
 @Transactional
@@ -16,10 +19,22 @@ public class CustomerServiceImpl implements CustomerService{
 	private CustomerDAO customerDAO;
 	
 	
+	
 	@Override
 	public String registerNewCustomer(Customer customer) {
+		
 		return customerDAO.registerNewCustomer(customer);
 	}
+	
+	
+//	public Customer customerLogin(String email, String password) {
+//		try {
+//			return customerDAO.customerLogin(email, password);
+//		} catch (InvalidPasswordOrUsername e) {
+//			System.out.println(e.getMessage());
+//		}
+//		return null;
+//	}
 
 	@Override
 	public Customer printAccountInfo(String accountID) {
@@ -28,7 +43,13 @@ public class CustomerServiceImpl implements CustomerService{
 		return customerDAO.printAccountInfo(accountID);
 	}
 
-	
+
+	@Override
+	public String authentication(String username, String password) throws InvalidPasswordOrUsername, EmailNotExits {
+		return customerDAO.authentication(username, password);
+	}
+
+
 	
 	
 }

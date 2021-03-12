@@ -45,8 +45,8 @@ public class CustomerEntity {
 	private String phoneNumber;
 	
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="SHOPPINGCART_ID", referencedColumnName="SHOPPINGCART_ID")
-	private ShoppingCartEntity shoppingCart_id;
+	@JoinColumn(name="FK_SHOPPINGCART", referencedColumnName="ID")
+	private ShoppingCartEntity shoppingCart;
 
 	public String getEmailID() {
 		return emailID;
@@ -96,12 +96,14 @@ public class CustomerEntity {
 		this.phoneNumber = phoneNumber;
 	}
 
-	public ShoppingCartEntity getShoppingCart_id() {
-		return shoppingCart_id;
+	
+
+	public ShoppingCartEntity getShoppingCart() {
+		return shoppingCart;
 	}
 
-	public void setShoppingCart_id(ShoppingCartEntity shoppingCart_id) {
-		this.shoppingCart_id = shoppingCart_id;
+	public void setShoppingCart(ShoppingCartEntity shoppingCart) {
+		this.shoppingCart = shoppingCart;
 	}
 
 	public int getZipCode() {

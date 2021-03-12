@@ -1,18 +1,29 @@
 package com.example.ShoppingApp.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="PRODUCT")
 public class ProductEntity {
 	
 	@Id
-	@Column(name="PRODUCT_ID")
+	@Column(name="ID")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
 	@Column(name="PRODUCT_NAME")
@@ -27,12 +38,33 @@ public class ProductEntity {
 	@Column(name="PRODUCT_CONDITION")
 	private String condition;
 	
-	@Column(name="PRODUCT_IMG")
-	private String imgURL;
+	@Column(name="PRODUCT_PRICE")
+	private int price;
+	
+	
+	@Column(name="PRODUCT_IMG", length=1000)
+	private byte[] imgURL;
+	
+	
+	public int getPrice() {
+		return price;
+	}
+	public void setPrice(int price) {
+		this.price = price;
+	}
+
+
+	
+
+	@ManyToMany(mappedBy = "productEntity")
+	private List<ShoppingCartEntity> shoppingCartEntity = new ArrayList<>();
+	
 	
 	@ManyToOne
-    @JoinColumn(name = "SHOPPINGCART_ID")
-	private ShoppingCartEntity shoppingCart_id;
+	@JoinColumn(name="admin_ID")
+	private AdminEntity adminEntity;
+	
+	
 	
 	public String getCondition() {
 		return condition;
@@ -65,18 +97,28 @@ public class ProductEntity {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-	public String getImgURL() {
+
+	
+	
+	public byte[] getImgURL() {
 		return imgURL;
 	}
-	public void setImgURL(String imgURL) {
+	public void setImgURL(byte[] imgURL) {
 		this.imgURL = imgURL;
 	}
-	public ShoppingCartEntity getShoppingCart_id() {
-		return shoppingCart_id;
+	public AdminEntity getAdminEntity() {
+		return adminEntity;
 	}
-	public void setShoppingCart_id(ShoppingCartEntity shoppingCart_id) {
-		this.shoppingCart_id = shoppingCart_id;
+	public void setAdminEntity(AdminEntity adminEntity) {
+		this.adminEntity = adminEntity;
 	}
+	public List<ShoppingCartEntity> getShoppingCartEntity() {
+		return shoppingCartEntity;
+	}
+	public void setShoppingCartEntity(List<ShoppingCartEntity> shoppingCartEntity) {
+		this.shoppingCartEntity = shoppingCartEntity;
+	}
+
 
 	
 	

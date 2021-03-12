@@ -1,14 +1,24 @@
 package com.example.ShoppingApp.model;
 
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Admin {
 	
+	private int id;
 	private String name;
 	private String username;
 	private String password;
-	private HashMap<Integer,Product> productList;
+	private List<Product> product;
 	
+	
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public String getName() {
 		return name;
 	}
@@ -27,12 +37,14 @@ public class Admin {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public HashMap<Integer, Product> getProductList() {
-		return productList;
+	public List<Product> getProduct() {
+		return product;
 	}
-	public void setProductList(HashMap<Integer, Product> productList) {
-		this.productList = productList;
+	public void setProduct(List<Product> product) {
+		this.product = product;
 	}
+
+	
 
 	
 	 

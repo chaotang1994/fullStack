@@ -1,1 +1,24 @@
-<p>account works!</p>
+<div class="page">
+    <!-- <button [routerLink]="['/home',id]" routerLinkActive="active">BACK</button> -->
+    <button type="button" class="btn btn-info" (click)="goBack()">BACK</button>
+
+    <h1>Account Details</h1>
+    ID: {{user.emailID}}
+    <br>
+    First Name: {{user.firstName}}
+    <br>
+    Last Name: {{user.lastName}}
+    <br>
+    Phone Number: {{user.phoneNumber}}
+    <br>
+    Address: {{user.address}}
+    <br>
+    City: {{user.city}}
+    <br>
+    State: {{user.state}}
+    <br>
+    Zip Code:{{user.zipCode}}
+    <br>
+
+    <button class="btn btn-primary" onClick="editInfo()">Edit</button>
+</div>

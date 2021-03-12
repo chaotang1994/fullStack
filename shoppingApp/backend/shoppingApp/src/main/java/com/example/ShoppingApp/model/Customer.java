@@ -12,21 +12,26 @@ public class Customer {
 	private String city;
 	private String state;
 	private int zipCode;
-	private ShoppingCart shoppingCart_id;
+	private ShoppingCart shoppingCart;
 	
 	public Customer() {}
 	
-	public Customer(String emailID, String password, String firstName, String lastName, String phoneNumber, String address) {
+	public Customer(String emailID, String password, String firstName, String lastName, 
+			String address,String city, String state, int zipCode,String phoneNumber) {
 		this.emailID=emailID;
 		this.password=password;
 		this.firstName=firstName;
 		this.lastName=lastName;
 		this.address=address;
+		this.city=city;
+		this.state=state;
+		this.zipCode=zipCode;
 		this.phoneNumber=phoneNumber;
-		
 		
 	}
 	
+
+
 	public String getEmailID() {
 		return emailID;
 	}
@@ -70,11 +75,14 @@ public class Customer {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public ShoppingCart getShoppingCart_id() {
-		return shoppingCart_id;
+	
+
+	public ShoppingCart getShoppingCart() {
+		return shoppingCart;
 	}
-	public void setShoppingCart_id(ShoppingCart shoppingCart_id) {
-		this.shoppingCart_id = shoppingCart_id;
+
+	public void setShoppingCart(ShoppingCart shoppingCart) {
+		this.shoppingCart = shoppingCart;
 	}
 
 	public int getZipCode() {
@@ -101,6 +109,7 @@ public class Customer {
 		this.city = city;
 	}
 
+	
 	
 	
 }

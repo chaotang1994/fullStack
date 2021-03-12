@@ -1,0 +1,6 @@
+div.page{
+    /* background: radial-gradient(ellipse at center, #edf1f5 1%, #14171a 95%);  */
+    background-color: hsl(28, 97%, 43%);
+    height:calc(100vh);
+    width:100%;
+}

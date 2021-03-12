@@ -1,0 +1,124 @@
+/* div.modeify{
+    background-color: hsl(28, 97%, 43%);
+    background-color:black;
+    height:auto;
+    min-height:400px;
+
+} */
+
+
+
+.table-wrapper {
+    width: 100%;
+    margin: 30px auto;
+    background: white;
+    padding: 20px;	
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+}
+
+.table-title {
+    padding-bottom: 10px;
+    margin: 0 0 10px;
+}
+
+.search input{ 
+    border-radius: 20px;
+    border-color: black;
+    color:chartreuse;
+}
+
+.search input::placeholder{ 
+    color:black;
+}
+
+.table-title .add-new {
+    float: right;
+    height: 40px;
+    font-weight: bold;
+    font-size: 12px;
+    text-shadow: none;
+    min-width: 100px;
+    border-radius: 50px;
+    line-height: 13px;
+}
+
+
+
+table.table tr th, table.table tr td {
+    border-color: black;
+    width:220px;
+}
+
+table.table tr td input{
+    width:100%;
+    border:none;
+}
+
+table.table tr td input:enabled{
+    color:rgb(29, 150, 226);
+}
+
+/* table.table tr th, table.table tr td input{
+    display: block;
+    margin: 0;
+    top:0;
+    left:0;
+    height: 100%;
+    width: 100%;
+    border: none;
+    padding: 10px;
+    box-sizing: border-box;
+} */
+
+table.table tr button{
+    width:50%;
+    height:50px; 
+}
+
+table.table .button_edit{
+    background-color: greenyellow;
+    border-radius: 8px;
+}
+
+table.table .button_remove{
+    background-color:lightcoral;
+    border-radius: 8px;
+}
+
+
+table.table tr .button:hover {
+    background-color: lightyellow; /* Green */
+    color: rgb(248, 61, 61);
+    border: none;
+    text-decoration: none;
+
+}
+
+.button:active{
+    
+    opacity: 1;
+    transition: 0s
+  }
+
+
+
+
+
+/* table.table td a.add i {
+    font-size: 24px;
+    margin-right: -1px;
+    position: relative;
+    top: 3px;
+}     */
+/* table.table .form-control {
+    height: 32px;
+    line-height: 32px;
+    box-shadow: none;
+    border-radius: 2px;
+}
+table.table .form-control.error {
+    border-color: #f50000;
+}
+table.table td .add {
+    display: none;
+} */

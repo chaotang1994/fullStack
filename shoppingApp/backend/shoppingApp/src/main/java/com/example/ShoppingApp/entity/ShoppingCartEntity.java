@@ -1,14 +1,21 @@
 package com.example.ShoppingApp.entity;
 
 
-import java.util.Map;
+
+
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -18,8 +25,8 @@ import javax.persistence.Table;
 public class ShoppingCartEntity {
 	
 	@Id
-	@Column(name="SHOPPINGCART_ID")
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="ID")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
 	@Column(name="TOTAL_PRICE")
@@ -27,13 +34,13 @@ public class ShoppingCartEntity {
 	
 	//tax?
 	
-	@OneToMany(mappedBy="shoppingCart_id", cascade = CascadeType.ALL)//mappedby properties in productEntity's shoppingCart_id
-	private Map<Integer,ProductEntity> productList;
-//	@JoinColumn(name="productList_ID", referencedColumnName="productList_id")
+	@ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+	@JoinTable(name="shopping_cart_has_product",
+	        joinColumns = @JoinColumn(name = "shopping_cart_id", referencedColumnName = "ID"),
+	        inverseJoinColumns = @JoinColumn(name = "product_id", referencedColumnName = "ID"))
+	private List<ProductEntity> productEntity = new ArrayList<>();
 
 	
-	
-
 	public int getId() {
 		return id;
 	}
@@ -50,13 +57,14 @@ public class ShoppingCartEntity {
 		this.totalPrice = totalPrice;
 	}
 
-	public Map<Integer, ProductEntity> getProductList() {
-		return productList;
+	public List<ProductEntity> getProductEntity() {
+		return productEntity;
 	}
 
-	public void setProductList(Map<Integer, ProductEntity> productList) {
-		this.productList = productList;
+	public void setProductEntity(List<ProductEntity> productEntity) {
+		this.productEntity = productEntity;
 	}
+
 
 
 

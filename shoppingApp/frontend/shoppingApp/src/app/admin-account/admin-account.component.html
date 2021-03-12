@@ -1,1 +1,68 @@
-<p>admin-account works!</p>
+<div class="home">
+    <nav class="navbar navbar-expand-lg">
+      <a class="navbar-brand" href="#">Shooping App</a>
+      <a class="user">Welcome {{email}} </a>
+  
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <a id="nav-toggle">&#9776;</a>
+      </button>
+  
+  
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        <form class="ml-auto">
+          <!-- <input class="form-control mr-sm-2" type="text" placeholder="Search for anything" aria-label="Search"> -->
+          <!-- <button class="btn blue-gradient btn-rounded btn-sm my-0" type="submit">Search</button> -->
+          <!-- <button class="btn btn-elegant btn-rounded btn-sm my-0" type="submit">Search</button> -->
+  
+        </form>
+  
+  
+  
+        <ul class="navbar-nav ml-auto">
+  
+  
+            <!-- <li>
+              <a style="cursor:pointer" [routerLink]="['/admin-account',id]" routerLinkActive="active">Home
+              </a>
+            </li>
+
+  
+
+              <li>
+                <a style="cursor:pointer" [routerLink]="['/admin-modifily-product',id]" routerLinkActive="active">Modifily Product</a>
+              </li> -->
+
+
+
+            <li>
+              <a style="cursor:pointer" (click)="homeClick()" [ngStyle]=" home===true && {'color':'red'}">Home
+              </a>
+            </li>
+
+  
+
+              <li>
+                <a style="cursor:pointer" (click)="modifilyClick()" [ngStyle]="modify===true && {'color':'red'}">Modify Product</a>
+              </li>
+       
+  
+              <li>
+                <a style="cursor:pointer" (click)="logout()">Login Out</a>
+              </li>
+  
+        </ul>
+  
+  
+  
+  
+      </div>
+
+    </nav>
+    <app-admin-home *ngIf="home" [admin_id]="id" [(searchProduct)]="searchProduct"></app-admin-home>
+    <app-admin-modify-product *ngIf="modify" [admin_id]="id"></app-admin-modify-product>
+
+  
+
+
+</div>

@@ -1,75 +1,108 @@
 
-<nav class="navbar navbar-expand-lg">
-  <a class="navbar-brand" href="#">Shooping App</a>
 
+<div class="home">
 
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <a id="nav-toggle">&#9776;</a>
-  </button>
+  <nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="#">Shooping App</a>
+    <a>Welcome {{email}} </a>
 
-
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-    <form class="form-inline ml-auto">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search for anything" aria-label="Search">
-      <!-- <button class="btn blue-gradient btn-rounded btn-sm my-0" type="submit">Search</button> -->
-      <button class="btn btn-elegant btn-rounded btn-sm my-0" type="submit">Search</button>
-
-    </form>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <a id="nav-toggle">&#9776;</a>
+    </button>
 
 
 
-    <ul class="navbar-nav ml-auto">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-   
+      <form class="form-inline ml-auto">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search Product" aria-label="Search" [(ngModel)]="searchProduct" [ngModelOptions]="{standalone: true}">
+        <!-- <button class="btn blue-gradient btn-rounded btn-sm my-0" type="submit">Search</button> -->
+        <!-- <button class="btn btn-elegant btn-rounded btn-sm my-0" type="submit">Search</button> -->
 
-
-        <li>
-          <a routerLink="/home" routerLinkActive="active">Home
-          <svg width="1.2em" height="1.2em" viewBox="0 0 18 18" class="bi bi-house-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" d="M8 3.293l6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
-            <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
-          </svg>
-          </a>
-        </li>
+      </form>
 
 
-        <li>
-          <a routerLink="/account" routerLinkActive="active">Account
-            <svg width="1.3em" height="1.3em" viewBox="0 0 18 18" class="bi bi-person-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-              <path fill-rule="evenodd" d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-            </svg>
-          </a>
-        </li>
+
+      <ul class="navbar-nav ml-auto">
+
 
           <li>
-            <a routerLink="/shopping-cart" routerLinkActive="active">Shopping Cart
-              <svg width="1.2em" height="1.2em" viewBox="0 0 18 18" class="bi bi-cart-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+            <a [routerLink]="['/home',id]" routerLinkActive="active">Home
+            <svg width="1.2em" height="1.2em" viewBox="0 0 18 18" class="bi bi-house-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" d="M8 3.293l6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
+              <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
+            </svg>
+            </a>
+          </li>
+
+
+          <li>
+            <a [routerLink]="['/account',id]" routerLinkActive="active">Account
+              <svg width="1.3em" height="1.3em" viewBox="0 0 18 18" class="bi bi-person-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
               </svg>
             </a>
           </li>
 
-
-          <!-- <li>
-            <a routerLink="/login" routerLinkActive="active">Login
-            </a>
-          </li> -->
-
-          <li>
-            <a routerLink="/register" routerLinkActive="active">Register
-            </a>
-          </li>
-
-    </ul>
+            <li>
+              <a [routerLink]="['/shopping-cart',id]" routerLinkActive="active">Shopping Cart
+                <svg width="1.2em" height="1.2em" viewBox="0 0 18 18" class="bi bi-cart-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+                </svg>
+              </a>
+            </li>
 
 
+            <!-- <li>
+              <a routerLink="/login" routerLinkActive="active">Login
+              </a>
+            </li>
+
+            <li>
+              <a routerLink="/register" routerLinkActive="active">Register
+              </a>
+            </li> -->
 
 
-  </div>
+            <li>
+              <a style="cursor:pointer" (click)="logout()">Login Out
+              </a>
+            </li>
 
-</nav>
+      </ul>
 
 
 
+
+    </div>
+
+  </nav>
+
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-3 column p-4" *ngFor="let product of products | paginate: { itemsPerPage: 10, currentPage: p } | itemFilter:searchProduct">
+          <div class="card" style="width: 16rem; " >
+            <img class="card-img-top card-img-top-250 one" src="assets/image/koi-fish.jpg" alt="{{product.name}}">
+
+            <div class="card-body">
+              <h5 class="card-title">{{product.name}}</h5>
+              <p class="card-text">
+                CATAGORY: {{product.category}} 
+                QUANTITY: {{product.quantity}}
+                CONDITION: {{product.condition}}
+              </p>
+              <button class="btn btn-primary" (click)="addToCart(product.id)">Add to Cart</button>
+            
+            </div>
+
+          </div>
+
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
+
+        </div>
+        </div>
+    </div>
+
+</div>

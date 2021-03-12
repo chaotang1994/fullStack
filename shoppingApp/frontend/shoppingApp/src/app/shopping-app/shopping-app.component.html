@@ -1,1 +1,16 @@
-<app-home></app-home>
+
+<div class="main">
+    <div class="container">
+    
+                <div class="Logo">
+                    Xshop <a>({{type}})</a>
+                </div>
+
+                <div class="content">
+                    <button type="button" class="btn btn-outline-info btn-block" [routerLink]="['/login',type]" routerLinkActive="active">Sign In</button>
+                    <button type="button" class="btn btn-outline-info btn-block" [routerLink]="['/register',type]" routerLinkActive="active">Sign Up</button>
+                </div>
+                
+
+    </div>
+</div>

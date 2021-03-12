@@ -1,0 +1,83 @@
+div.home{
+    /* background: radial-gradient(ellipse at center, #edf1f5 1%, #14171a 95%);  */
+    background-color: hsl(28, 97%, 43%);
+    /* height:calc(100vh); */
+    width:100%;
+    }
+
+div.container{
+    width:100%;
+}
+
+.navbar{
+    background-color:sienna;
+    
+}
+.active {
+    box-shadow: 0 4px 8px 0 rgba(248, 15, 15, 0.945);
+    transition: 0.3s;
+}
+
+.navbar .navbar-brand{
+    color:white;
+    font-family: Georgia, serif;
+}
+
+.navbar .navbar-brand:hover{
+    color:rgb(250, 200, 90);
+    transition-duration: 0.6s;
+}
+
+.navbar .form-inline{
+    width:70%;
+}
+
+
+.collapse form input{
+    width:50%;
+    color: hsl(28, 97%, 43%);
+    
+}
+
+::placeholder {
+    color:gray;
+    opacity: 0.8;
+    font-family: Georgia, serif;
+  }
+
+.collapse form button{
+    font-size:medium;
+    color:white;
+    background-color: hsl(28, 97%, 43%);
+    font-family: Georgia, serif;
+}
+.collapse form button:hover{
+    /* color:rgb(250, 200, 90); */
+    color:rgb(252, 211, 125);
+    transition-duration: 0.6s;
+}
+
+
+#nav-toggle{
+    text-decoration: none;
+    color:white;
+}
+.navbar .navbar-nav{
+    /* background-color:black; */
+}
+
+.navbar .navbar-nav li{
+    margin-right: 20px;
+    
+}
+
+.navbar .navbar-nav li a{
+    text-decoration: none;
+    color:white;
+    font-family: Georgia, serif;
+}
+
+.navbar .navbar-nav li a:hover{
+    transition-duration: 0.6s;
+    color:rgb(250, 200, 90);
+}

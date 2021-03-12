@@ -4,12 +4,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
+import com.example.ShoppingApp.exception.EmailNotExits;
+import com.example.ShoppingApp.exception.InvalidPasswordOrUsername;
 import com.example.ShoppingApp.model.Customer;
 import com.example.ShoppingApp.model.Name;
 import com.example.ShoppingApp.service.CustomerService;
@@ -34,29 +39,29 @@ public class CustomerAPI {
 //				throw new ResponseStatusException(HttpStatus.NOT_ACCEPTABLE,environment.getProperty(e.getMessage()));
 //			}
 //			throw new ResponseStatusException(HttpStatus.CONFLICT,environment.getProperty(e.getMessage()));
-			e.printStackTrace();
 			throw new ResponseStatusException(HttpStatus.CONFLICT);
 
 		}
 		
+	
+		
+	}
+	
+
+	
+	@PostMapping(value="/printAccountInfo")
+	public ResponseEntity<Customer> printAccountInfo(@RequestBody String id){
+		Customer customer = customerService.printAccountInfo(id);
+		if(customer!=null) {
+			return new ResponseEntity<Customer>(customer,HttpStatus.OK);
+		}
+		return null;
 	}
 
 	
 
 	
-//	
-//	@RequestMapping(value="/printAccountInfo", method=RequestMethod.GET)
-//	public ResponseEntity<String> printAccountInfo() {
-//		try {
-//			String accountID="ctang2316@gmail.com";
-//			Customer customer = customerService.printAccountInfo(accountID);
-//			return new ResponseEntity<String>("Successfully " + customer.getEmailID() +" "
-//					+customer.getAddress()+" "
-//					+customer.getName(),HttpStatus.CREATED);
-//		}catch(Exception e) {
-//			throw new ResponseStatusException(HttpStatus.BAD_REQUEST,e.getMessage(),e);
-//		}
-//		
-//	}
+
+
 
 }
