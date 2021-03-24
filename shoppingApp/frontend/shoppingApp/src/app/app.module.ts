@@ -19,7 +19,8 @@ import { CommonModule } from '@angular/common';
 import { AdminModifyAddProductComponent } from './admin-modify-add-product/admin-modify-add-product.component';
 import { ItemFilterPipe } from './item-filter.pipe';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import {NgxPaginationModule} from 'ngx-pagination'; 
+import {NgxPaginationModule} from 'ngx-pagination';
+import { FilterListPipe } from './filter-list.pipe'; 
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
     AdminModifyProductComponent,
     AdminHomeComponent,
     AdminModifyAddProductComponent,
-    ItemFilterPipe
+    ItemFilterPipe,
+    FilterListPipe
 
 
   ],

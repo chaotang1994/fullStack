@@ -34,7 +34,7 @@ public class ShoppingCartEntity {
 	
 	//tax?
 	
-	@ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.REFRESH)
 	@JoinTable(name="shopping_cart_has_product",
 	        joinColumns = @JoinColumn(name = "shopping_cart_id", referencedColumnName = "ID"),
 	        inverseJoinColumns = @JoinColumn(name = "product_id", referencedColumnName = "ID"))

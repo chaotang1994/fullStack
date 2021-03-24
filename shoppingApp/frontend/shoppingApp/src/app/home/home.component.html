@@ -1,9 +1,9 @@
 
 
-<div class="home">
+<div class="home" >
 
   <nav class="navbar navbar-expand-lg">
-    <a class="navbar-brand" href="#">Shooping App</a>
+    <a class="navbar-brand" href="#">XShop</a>
     <a>Welcome {{email}} </a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -18,7 +18,6 @@
         <input class="form-control mr-sm-2" type="search" placeholder="Search Product" aria-label="Search" [(ngModel)]="searchProduct" [ngModelOptions]="{standalone: true}">
         <!-- <button class="btn blue-gradient btn-rounded btn-sm my-0" type="submit">Search</button> -->
         <!-- <button class="btn btn-elegant btn-rounded btn-sm my-0" type="submit">Search</button> -->
-
       </form>
 
 
@@ -44,6 +43,9 @@
             </a>
           </li>
 
+
+
+
             <li>
               <a [routerLink]="['/shopping-cart',id]" routerLinkActive="active">Shopping Cart
                 <svg width="1.2em" height="1.2em" viewBox="0 0 18 18" class="bi bi-cart-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -66,6 +68,9 @@
 
             <li>
               <a style="cursor:pointer" (click)="logout()">Login Out
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-right-circle-fill" viewBox="0 0 16 16">
+                  <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm5.904-2.803a.5.5 0 1 0-.707.707L9.293 10H6.525a.5.5 0 0 0 0 1H10.5a.5.5 0 0 0 .5-.5V6.525a.5.5 0 0 0-1 0v2.768L5.904 5.197z"/>
+                </svg>
               </a>
             </li>
 
@@ -78,10 +83,12 @@
 
   </nav>
 
+  <div class="info" *ngIf="serveDisconnected">Serve Disconnected!!!</div>
+  <div class="info" *ngIf="noProductListFound">Currently product list is Empty!!!</div>
 
-    <div class="container">
+  <div class="container">
       <div class="row">
-        <div class="col-sm-3 column p-4" *ngFor="let product of products | paginate: { itemsPerPage: 10, currentPage: p } | itemFilter:searchProduct">
+        <div class="col-sm-3 column p-4" *ngFor="let product of products |  itemFilter : searchProduct | paginate: { itemsPerPage: 8, currentPage: p } ">
           <div class="card" style="width: 16rem; " >
             <img class="card-img-top card-img-top-250 one" src="assets/image/koi-fish.jpg" alt="{{product.name}}">
 
@@ -89,20 +96,29 @@
               <h5 class="card-title">{{product.name}}</h5>
               <p class="card-text">
                 CATAGORY: {{product.category}} 
-                QUANTITY: {{product.quantity}}
+                <br>
                 CONDITION: {{product.condition}}
+                <br>
+                <label>QUANTITY:</label>
+                <span><input class="quantity" type="number" [(ngModel)]="product.quantity" [disabled]="product.id!==currentID"/></span>
               </p>
-              <button class="btn btn-primary" (click)="addToCart(product.id)">Add to Cart</button>
+              <button type="button" class="btn btn-success" *ngIf="product.id!==currentID" (click)="editQuantity(product.id)">Edit</button>
+              <button type="button" class="btn btn-warning" *ngIf="product.id===currentID" (click)="saveQuantity()">Save</button>
+              <button type="button" class="btn btn-primary" (click)="addToCart(product)">Add to Cart</button>
             
             </div>
 
           </div>
-
-          <pagination-controls (pageChange)="p = $event"></pagination-controls>
-
-
         </div>
         </div>
+        <pagination-controls 
+          class="pagination"
+          (pageChange)="p = $event"
+          autoHide="true"
+          previousLabel="Previous"
+          nextLabel="Next"
+        ></pagination-controls>
+
     </div>
 
 </div>

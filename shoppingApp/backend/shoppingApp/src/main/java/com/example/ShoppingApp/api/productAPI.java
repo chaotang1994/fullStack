@@ -6,9 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -54,10 +56,10 @@ public class productAPI {
 	
 	@PostMapping(value="/addProductToCustomer/{id}")
 	@ResponseBody
-	public ResponseEntity<Integer> addProductToCustomer(@PathVariable("id")String id, @RequestBody Integer productID){
-		System.out.println("productID " +productID);
+	public ResponseEntity<Integer> addProductToCustomer(@PathVariable("id")String id, @RequestBody Product product){
+		System.out.println("productID " +product.getId());
 		System.out.println("customerID" +id);
-		int productId=productService.addProductToCustomer(productID,id);
+		int productId=productService.addProductToCustomer(product,id);
 		return new ResponseEntity<Integer>(productId,HttpStatus.OK);
 	} 
 	
@@ -69,7 +71,6 @@ public class productAPI {
 			list = productService.getProductsFromShoppingCart(id);
 			return new ResponseEntity<List<Product>>(list,HttpStatus.OK);
 		} catch (Exception e) {
-			System.out.println("here");
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND);		
 		}
 	}
@@ -91,6 +92,16 @@ public class productAPI {
 		}
 	}
 	
+	@DeleteMapping(value="/removeProductFromUser/{id}/{product_id}")
+	@ResponseBody
+	public ResponseEntity<Integer> removeProductFromCustomer(@PathVariable("id")String id, @PathVariable("product_id")int product_id) {
+		int result = productService.removeProductFromCustomer(id, product_id);
+		if(result!=-1) {
+			return new ResponseEntity<Integer>(result,HttpStatus.OK);
+		}
+		return new ResponseEntity<Integer>(result,HttpStatus.BAD_REQUEST);
+	}
+	
 	@PostMapping(value="/editProductFromAdmin/{admin_id}")
 	public ResponseEntity<Boolean> editProductFromAdmin(@PathVariable("admin_id") String admin_id,@RequestBody Product product){
 		boolean result=false;
@@ -100,6 +111,12 @@ public class productAPI {
 		}
 		return new ResponseEntity<Boolean>(result,HttpStatus.OK);
 		
+	}
+	
+	@PutMapping(value="/updateQuantityFromUser/{user_id}")
+	public ResponseEntity<Integer> updateQuantityFromUser(@PathVariable("user_id") String user_id,@RequestBody Product product){
+		Integer id=productService.updateQuantityFromUser(user_id, product);
+		return new ResponseEntity<Integer>(id,HttpStatus.OK);
 	}
 	
 	

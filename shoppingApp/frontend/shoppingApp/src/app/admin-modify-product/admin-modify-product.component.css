@@ -6,14 +6,21 @@
 
 } */
 
+.container{
+    width: 100vw;
+    height: 100vh;
+}
+
 
 
 .table-wrapper {
     width: 100%;
+    height: 95%;
     margin: 30px auto;
     background: white;
     padding: 20px;	
     box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    display: block;
 }
 
 .table-title {
@@ -31,6 +38,8 @@
     color:black;
 }
 
+  
+
 .table-title .add-new {
     float: right;
     height: 40px;
@@ -41,7 +50,6 @@
     border-radius: 50px;
     line-height: 13px;
 }
-
 
 
 table.table tr th, table.table tr td {
@@ -95,7 +103,6 @@ table.table tr .button:hover {
 }
 
 .button:active{
-    
     opacity: 1;
     transition: 0s
   }

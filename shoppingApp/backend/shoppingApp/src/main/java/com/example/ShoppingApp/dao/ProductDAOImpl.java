@@ -1,6 +1,7 @@
 package com.example.ShoppingApp.dao;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -24,6 +25,18 @@ public class ProductDAOImpl implements ProductDAO{
 	@PersistenceContext
 	private EntityManager entityManager;
 	
+	
+	public ProductEntity setProductEntity(Product product) {
+		ProductEntity productEntity = new ProductEntity();
+		productEntity.setId(product.getId());
+		productEntity.setName(product.getName());
+		productEntity.setCategory(product.getCategory());
+		productEntity.setCondition(product.getCondition());
+		productEntity.setImgURL("".getBytes());//
+		productEntity.setPrice(product.getPrice());
+		productEntity.setQuantity(product.getQuantity());
+		return productEntity;
+	}
 	
 	@Override
 	public List<Product> getProductsFromAdmin(String username) throws Exception {
@@ -91,8 +104,6 @@ public class ProductDAOImpl implements ProductDAO{
 		Query query = entityManager.createQuery(jpql);
 		query.setParameter("admin_name", admin_name);
 		adminEntity = (AdminEntity) query.getSingleResult();
-		
-		
 		if(adminEntity!=null) {
 				List<ProductEntity> productEntity=adminEntity.getAdminProduct();
 	        	ProductEntity productE = new ProductEntity();
@@ -140,33 +151,55 @@ public class ProductDAOImpl implements ProductDAO{
 
 	
 
-	@Override
-	public int addProductToCustomer(int productID, String id) {
-		CustomerEntity customerEntity=entityManager.find(CustomerEntity.class, id);
-		ProductEntity productEntity = entityManager.find(ProductEntity.class, productID);
+	@Override//do not have to check same product exits before add to shoppingCart
+	public int addProductToCustomer(Product product, String id) {
+		CustomerEntity customerEntity;
+		customerEntity=entityManager.find(CustomerEntity.class, id);
+		ProductEntity productEntity = entityManager.find(ProductEntity.class, product.getId());//check product exits in product database
+		ProductEntity pe;
 		if(customerEntity!=null && productEntity!=null) {
 			try {
-				customerEntity.getShoppingCart().getProductEntity().add(productEntity);
-				productEntity.getShoppingCartEntity().add(customerEntity.getShoppingCart());
-				entityManager.persist(customerEntity);
-				System.out.println("here");
-				return productID;
-			} catch (Exception e) {
+//				for(ProductEntity ptEntity: customerEntity.getShoppingCart().getProductEntity()) {
+//					if(ptEntity.getId()==product.getId()) {
+//						ptEntity.setQuantity(ptEntity.getQuantity()+product.getQuantity());//if item already exits in cart when user click again addToCart, all I do is to increase quantity of the product in the cart
+//						return product.getId(); 
+//					}
+//				}
+				pe = new ProductEntity();
+				pe.setId(product.getId());
+				pe.setName(product.getName());
+				pe.setCategory(product.getCategory());
+				pe.setCondition(product.getCondition());
+				pe.setImgURL("".getBytes());//
+				pe.setPrice(product.getPrice());
+				pe.setQuantity(product.getQuantity());
+				
+				
+				System.out.println(" ppp  ppp size: "+ customerEntity.getShoppingCart().getProductEntity().size());
+				System.out.println(" pe: "+ pe.getQuantity());
+
+				customerEntity.getShoppingCart().getProductEntity().add(pe);
+				System.out.println(" ppp  ppp size after: "+ customerEntity.getShoppingCart().getProductEntity().size());
+				
+				return product.getId();
+				
+			}catch(Exception e) {
 				e.printStackTrace();
 			}
 		}
 		if(customerEntity==null) {
-			System.out.println("customer Entity is null");
+		System.out.println("customer Entity is null");
 		}
 		if(productEntity==null) {
 			System.out.println("product Entity is null");
 		}
 		return -1;
+
 	}
 
 	@Override
 	public List<Product> getProductsFromShoppingCart(String id) throws Exception {
-		CustomerEntity customerEntity= new CustomerEntity();
+		CustomerEntity customerEntity;
 		customerEntity=entityManager.find(CustomerEntity.class, id);
 		List<ProductEntity> shoppingCartProduct=customerEntity.getShoppingCart().getProductEntity();
 		List<Product> list = new ArrayList<>();
@@ -183,6 +216,7 @@ public class ProductDAOImpl implements ProductDAO{
 				product.setCondition(productE.getCondition());
 				product.setCategory(productE.getCategory());
 				product.setQuantity(productE.getQuantity());
+				System.out.println(" get  quantity: "+ product.getQuantity());
 				product.setPrice(productE.getPrice());
 				product.setImgURL("");
 				list.add(product);
@@ -220,6 +254,36 @@ public class ProductDAOImpl implements ProductDAO{
 			return true;
 		}
 		return false;
+	}
+
+
+	@Override
+	public int removeProductFromCustomer(String id, int product_id) {
+		CustomerEntity customerEntity=entityManager.find(CustomerEntity.class, id);
+		List<ProductEntity> peList=customerEntity.getShoppingCart().getProductEntity();
+		for(int i=0; i<peList.size(); i++) {
+			if(peList.get(i).getId()==product_id) {
+				System.out.println("item "+peList.get(i).getId()+ " id + "+ peList.get(i).getName() +" remove successfully!!!");
+				ProductEntity pe=peList.remove(i);
+				return pe.getId();
+			}
+		}
+		return -1;
+	}
+
+
+	@Override
+	public Integer updateQuantityFromUser(String user_id, Product product) {
+		CustomerEntity customerEntity=entityManager.find(CustomerEntity.class, user_id);
+		List<ProductEntity> customer_productList=customerEntity.getShoppingCart().getProductEntity();
+		for(ProductEntity pe : customer_productList) {
+			if(pe.getId()==product.getId()) {
+				pe.setQuantity(product.getQuantity());
+				System.out.println("quantity: "+product.getQuantity());
+				return pe.getId();
+			}
+		}
+		return -1;
 	}
 
 

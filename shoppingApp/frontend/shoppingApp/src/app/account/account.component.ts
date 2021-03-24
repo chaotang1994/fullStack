@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import { User } from '../user';
 import {UserService} from '../user.service';
@@ -13,6 +13,9 @@ export class AccountComponent implements OnInit {
 
   id:string
   user:User
+  disable:boolean =true;
+  @ViewChild('alert', { static: true }) alert: ElementRef;
+  alertDialog:boolean=false;
 
   constructor(
     private activatedRoute:ActivatedRoute, 
@@ -44,8 +47,31 @@ export class AccountComponent implements OnInit {
     );
   }
 
-  goBack(){
+
+
+  backClicked(){
     this.location.back();
   }
+
+  saveInfo(){
+    this.userService.UpdateUser(this.user).subscribe(
+      success=>{
+        if(success){
+          this.loadUser();
+          this.alertDialog=success;
+        }
+      }
+    );
+    this.disable=true;
+  }
+
+  editInfo(){
+    this.disable=false;
+  }
+
+  closeAlert() {
+    this.alertDialog=false;
+  }
+
 
 }

@@ -121,7 +121,20 @@ public class CustomerDAOImpl implements CustomerDAO{
 	}
 
 	
-	
+	public Boolean UpdateUser(Customer customer) {
+		CustomerEntity customerEntity=entityManager.find(CustomerEntity.class, customer.getEmailID());
+		if(customerEntity!=null) {
+			customerEntity.setFirstName(customer.getFirstName());
+			customerEntity.setLastName(customer.getLastName());
+			customerEntity.setPhoneNumber(customer.getPhoneNumber());
+			customerEntity.setAddress(customer.getAddress());
+			customerEntity.setCity(customer.getCity());
+			customerEntity.setState(customer.getState());
+			customerEntity.setZipCode(customer.getZipCode());
+			return true;
+		}
+		return false;
+	}
 
 	@Override
 	public void emptyShoppingCart() {
@@ -129,23 +142,6 @@ public class CustomerDAOImpl implements CustomerDAO{
 		
 	}
 
-	@Override
-	public void changePassword(String password) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void changeAddress(String Address) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void changePhone(String Phone) {
-		// TODO Auto-generated method stub
-		
-	}
 
 
 

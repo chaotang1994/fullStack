@@ -47,10 +47,10 @@ public class ShoppingAppApplication implements CommandLineRunner{
 //		addProductToCustomer();
 	}
 
-	public void addProductToCustomer(){
-		int id=productService.addProductToCustomer(3, "meile");
-		System.out.println(id);
-	}
+//	public void addProductToCustomer(){
+//		int id=productService.addProductToCustomer(3, "meile");
+//		System.out.println(id);
+//	}
 	
 
 //	public void addProductFromAdmin() {

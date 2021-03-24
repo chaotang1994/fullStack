@@ -52,8 +52,6 @@ public class ProductEntity {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-
-
 	
 
 	@ManyToMany(mappedBy = "productEntity")

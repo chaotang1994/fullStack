@@ -1,16 +1,10 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { Input, Output, EventEmitter  } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import {Location} from '@angular/common';
 import {FormGroup, FormControl, FormBuilder, Validators} from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
-import { environment } from '../../environments/environment';
 import { ProductService } from '../product.service';
-import {debounceTime} from 'rxjs/operators';
-import {NgbAlert} from '@ng-bootstrap/ng-bootstrap';
 import {Subject} from 'rxjs';
 import {Product} from '../product';
-import { first } from 'rxjs/operators';
 
 
 @Component({
@@ -20,7 +14,6 @@ import { first } from 'rxjs/operators';
 })
 export class AdminModifyAddProductComponent implements OnInit {
 
-  // @Output() countChanged: EventEmitter<number> =   new EventEmitter();
 
   admin_id:string;
   url:string;
@@ -28,30 +21,25 @@ export class AdminModifyAddProductComponent implements OnInit {
   submitted:boolean=false;
   file:File=null;
   private _success = new Subject<string>();  
-  @ViewChild('selfClosingAlert', {static: false}) selfClosingAlert: NgbAlert;
   successMessage = '';
   product:Product;
-  Condition:any=['new','used','unknow']
-  Category:any=['electronic','apparel','food']
-  
+  Condition:any=['New','Used','Unknow'];
+  Category:any=['Electronic','Apparel','Food'];
+
 
   constructor(
     private route: ActivatedRoute,
     private _location: Location,
     private formBuilder: FormBuilder,
-    private productService:ProductService
-  ) { 
+    private productService:ProductService,
+    private router: Router
+    ) { 
     
   }
 
   ngOnInit(): void {
     this.getId();
     this.createForm();
-    this._success.pipe(debounceTime(500)).subscribe(() => {
-      if (this.selfClosingAlert) {
-        this.selfClosingAlert.close();
-      }
-    });
   }
 
   getId(){
@@ -66,7 +54,7 @@ export class AdminModifyAddProductComponent implements OnInit {
   createForm(){
     this.addProductForm=this.formBuilder.group({
       product_name:['',[Validators.required,Validators.minLength(1)]],
-      product_quantity:['',[Validators.required,Validators.min(1)]],
+      product_quantity:[1],
       product_price:['',[Validators.required,Validators.min(1)]],
       product_image:[null,[Validators.required]],
       product_category:['',[Validators.required,Validators.minLength(1)]],
@@ -114,19 +102,16 @@ export class AdminModifyAddProductComponent implements OnInit {
     console.log("onSumbit yes");
     this.submitted=true;
 
-    console.log("invalide? "+this.addProductForm.invalid);
-
-
-
-    console.log("name"+ this.addProductForm.value.product_name);
-    console.log("qu"+ this.addProductForm.value.product_quantity);
-    console.log("pr"+ this.addProductForm.value.product_price);
-    console.log("ca"+ this.addProductForm.value.product_category);
-    console.log("co"+ this.addProductForm.value.product_condition);
-    console.log("co "+ this.f['product_condition'].value);
-    console.log("img "+ this.f['product_image'].value);
-    console.log("-----------------");
-    console.log("id "+this.admin_id);
+    // console.log("invalide? "+this.addProductForm.invalid);
+    // console.log("name"+ this.addProductForm.value.product_name);
+    // console.log("qu"+ this.addProductForm.value.product_quantity);
+    // console.log("pr"+ this.addProductForm.value.product_price);
+    // console.log("ca"+ this.addProductForm.value.product_category);
+    // console.log("co"+ this.addProductForm.value.product_condition);
+    // console.log("co "+ this.f['product_condition'].value);
+    // console.log("img "+ this.f['product_image'].value);
+    // console.log("-----------------");
+    // console.log("id "+this.admin_id);
 
     if (this.addProductForm.invalid) {
       return;
@@ -141,18 +126,19 @@ export class AdminModifyAddProductComponent implements OnInit {
     this.addProductForm.value.product_image
     );
 
-      this.productService.addProductFromAdmin(this.admin_id, product).subscribe(
-        res=>{
-          console.log("response: "+res);
-          alert('Updated Successfully.')
-          this.changeSuccessMessage();
-          this.backClicked();
-        },
-        error=>{
-          console.log("error: "+error);
-        }
+    this.productService.addProductFromAdmin(this.admin_id, product).subscribe(
+      res=>{
+        console.log("response: "+res);
+        window.alert('New Product Added Successfully.')
+        
+        this.changeSuccessMessage();
+        this.backClicked();
+      },
+      error=>{
+        console.log("error: "+error);
+      }
 
-      );
+    );
     
        
   }

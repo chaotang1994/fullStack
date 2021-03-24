@@ -4,13 +4,14 @@ import { Name } from '../app/name';
 import { Observable } from 'rxjs';
 import {environment} from  '../environments/environment';
 import { Product } from '../app/product';
+import { User} from '../app/user';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  environment
+  
   url:string = 'http://localhost:8888';
   
 
@@ -29,6 +30,11 @@ export class UserService {
 
   UserDetails(id):Observable<any>{
     return this.http.post(environment.apiUrl+'/printAccountInfo',id);
+  }
+
+
+  UpdateUser(user:User):Observable<any>{
+    return this.http.put(environment.apiUrl+'/updateUser',user);
   }
 
   // loadHome(id):Observable<any>{

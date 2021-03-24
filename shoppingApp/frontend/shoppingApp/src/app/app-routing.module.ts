@@ -24,9 +24,14 @@ const routes: Routes = [
   { path: 'login/:type', component: LoginComponent},
   { path: 'shopping-app/:type', component: ShoppingAppComponent},
   { path: 'login-Option', component: LoginOptionComponent},
-  { path: 'admin-account/:id', component: AdminAccountComponent, canActivate: [AuthGuard] },
-  { path: 'admin-modify-product/:id', component: AdminModifyProductComponent},
-  { path: 'admin-home/:id', component: AdminHomeComponent},
+  { path: 'admin-account/:id', component: AdminAccountComponent, canActivate: [AuthGuard],
+     children:[
+      { path: 'admin-modify-product', component: AdminModifyProductComponent},
+      { path: 'admin-home', component: AdminHomeComponent},
+      ]
+  },
+  // { path: 'admin-modify-product/:id', component: AdminModifyProductComponent},
+  // { path: 'admin-home/:id', component: AdminHomeComponent},
   { path: 'admin-modify-add-product/:id', component: AdminModifyAddProductComponent},
   // { path: '**', component: LoginOptionComponent },
 

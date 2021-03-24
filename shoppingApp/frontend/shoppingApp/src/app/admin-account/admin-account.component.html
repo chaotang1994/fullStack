@@ -1,6 +1,6 @@
 <div class="home">
     <nav class="navbar navbar-expand-lg">
-      <a class="navbar-brand" href="#">Shooping App</a>
+      <a class="navbar-brand" href="#">XShop</a>
       <a class="user">Welcome {{email}} </a>
   
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -60,7 +60,7 @@
 
     </nav>
     <app-admin-home *ngIf="home" [admin_id]="id" [(searchProduct)]="searchProduct"></app-admin-home>
-    <app-admin-modify-product *ngIf="modify" [admin_id]="id"></app-admin-modify-product>
+    <app-admin-modify-product *ngIf="modify" [admin_id]="id" ></app-admin-modify-product>
 
   
 

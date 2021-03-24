@@ -49,6 +49,10 @@ public class CustomerServiceImpl implements CustomerService{
 		return customerDAO.authentication(username, password);
 	}
 
+	
+	public Boolean UpdateUser(Customer customer) {
+		return customerDAO.UpdateUser(customer);
+	}
 
 	
 	

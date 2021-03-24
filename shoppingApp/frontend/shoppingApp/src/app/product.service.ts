@@ -23,16 +23,21 @@ export class ProductService {
     return this.http.get<Product[]>(environment.apiUrl+'/getProductsFromShoppingCart/'+id);
   }
 
-  addProductToUser(product_id: number, user_id : string):Observable<string>{
-    console.log("Service check: "+product_id);
+  addProductToUser(product: Product, user_id : string):Observable<number>{
+    console.log("Service check: "+product.id);
     console.log("Service check: "+user_id);
-    return this.http.post<string>(environment.apiUrl+'/addProductToCustomer/'+user_id, product_id);
+    return this.http.post<number>(environment.apiUrl+'/addProductToCustomer/'+user_id, product);
   }
 
   removeProductFromAdmin(product_id:number, admin_id:string):Observable<boolean>{
     console.log("product_id: "+product_id);
     console.log("admin_id: "+admin_id);
     return this.http.post<boolean>(environment.apiUrl+'/removeProductFromAdmin/'+admin_id, product_id);
+  }
+
+  removeProductFromUser(product_id:number, user_id:string):Observable<number>{
+    // const url = `${environment.apiUrl}/${user_id}/${product_id}`;
+    return this.http.delete<number>(environment.apiUrl+'/removeProductFromUser/'+user_id+'/'+product_id);
   }
   
   //AdminModifyProductComponent
@@ -43,6 +48,10 @@ export class ProductService {
   //add product from admin account
   addProductFromAdmin(admin_name:string, product:Product):Observable<boolean>{
     return this.http.post<boolean>(environment.apiUrl+'/addProductFromAdmin/'+admin_name,product);
+  }
+
+  updateQuantityFromUser(user_id:string,product:Product):Observable<number>{
+    return this.http.put<number>(environment.apiUrl+'/updateQuantityFromUser/'+user_id,product);
   }
 
 }

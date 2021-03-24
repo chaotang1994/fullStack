@@ -96,7 +96,6 @@ public class CustomerEntity {
 		this.phoneNumber = phoneNumber;
 	}
 
-	
 
 	public ShoppingCartEntity getShoppingCart() {
 		return shoppingCart;

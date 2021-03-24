@@ -16,6 +16,7 @@ export class AdminAccountComponent implements OnInit {
   id:string=null
   modify:boolean=false;
   home:boolean=true;
+  status:boolean=false;
   // url:string;
 
   constructor(
@@ -35,27 +36,21 @@ export class AdminAccountComponent implements OnInit {
       }
     );
     this.email=this.id;
-
   }
 
 
-  // isHomeRoute(){
-  //   return this.router.url==='/admin-account/'+this.email;
-  // }
-
-  // ismodifilyProduct(){
-  //   return this.router.url==='/admin-modifily-product/'+this.email;
-  // }
 
   homeClick(){
     this.home=true;
     this.modify=false;
+
   }
 
   modifilyClick(){
-    this.home=false;
     this.modify=true;
+    this.home=false;
   }
+
 
 
   logout(){

@@ -21,10 +21,10 @@ nav a{
     background-color:sienna;
     
 }
-.active {
+/* .active {
     box-shadow: 0 4px 8px 0 rgba(248, 15, 15, 0.945);
     transition: 0.3s;
-}
+} */
 
 .navbar .navbar-brand{
     color:white;
@@ -89,7 +89,20 @@ nav a{
     transition-duration: 0.6s;
     color:rgb(250, 200, 90);
 }
+/* ---------- nav bar*/
 
+
+/* p{
+    padding-left:40px;
+    color:rgb(143, 1, 1);
+    font-size:80px;
+} */
+
+.info{
+    padding-left:40px;
+    color:rgb(143, 1, 1);
+    font-size:80px;
+}
 
 .card {
     /* Add shadows to create the "card" effect */
@@ -100,3 +113,39 @@ nav a{
   .card:hover {
     box-shadow: 0 16px 16px 0 rgba(0,0,0,0.2);
   }
+
+  .pagination /deep/ .ngx-pagination .current {
+    background-color:rgba(238, 73, 73, 0.945);
+ 
+  }
+
+  .pagination /deep/ .ngx-pagination :hover {
+    background-color:rgba(98, 205, 255, 0.4);
+  }
+
+
+button{
+    height: auto;
+    border-radius: 2px;
+}
+
+input.quantity{
+    width: 50%;
+    height: 25px;
+    border: 2px solid lightskyblue;
+}
+
+input:disabled.quantity{
+    width: 50%;
+    border:none;
+}
+
+input:disabled::-webkit-outer-spin-button,
+input:disabled::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}

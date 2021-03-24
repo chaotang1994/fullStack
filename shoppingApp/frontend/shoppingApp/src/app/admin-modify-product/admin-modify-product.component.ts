@@ -16,12 +16,12 @@ export class AdminModifyProductComponent implements OnInit {
   success:boolean
   searchProduct:any;
 
-  name:string;
-  category:string;
-  quantity:number;
-  condition:string;
-  price:number;
-  imgURL:string;
+  // name:string;
+  // category:string;
+  // quantity:number;
+  // condition:string;
+  // price:number;
+  // imgURL:string;
 
   constructor(
     private productService:ProductService

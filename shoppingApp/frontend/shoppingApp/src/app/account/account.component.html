@@ -1,24 +1,58 @@
 <div class="page">
     <!-- <button [routerLink]="['/home',id]" routerLinkActive="active">BACK</button> -->
-    <button type="button" class="btn btn-info" (click)="goBack()">BACK</button>
+    <span (click)="backClicked()">
+        <!-- fix here -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor" class="bi bi-arrow-left-short" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z"/>
+        </svg>
+    </span>
+    <div class="content">
+        <div #alert *ngIf="alertDialog" class="alert alert-warning alert-dismissible fade show" role="alert">
+            <button type="button" class="close" aria-label="Close" (click)="closeAlert()">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <strong>Hey {{user.emailID}}!</strong> Your informations updated successfully!!!
+        </div>
 
-    <h1>Account Details</h1>
-    ID: {{user.emailID}}
+    <span class="title">Account Details</span>
     <br>
-    First Name: {{user.firstName}}
-    <br>
-    Last Name: {{user.lastName}}
-    <br>
-    Phone Number: {{user.phoneNumber}}
-    <br>
-    Address: {{user.address}}
-    <br>
-    City: {{user.city}}
-    <br>
-    State: {{user.state}}
-    <br>
-    Zip Code:{{user.zipCode}}
-    <br>
+            <p style="font-size: 26px;"><span style="color:blue;font-weight:bold;">ID:  {{user.emailID}}</span></p>
 
-    <button class="btn btn-primary" onClick="editInfo()">Edit</button>
+                <p><span style="color:blue;font-weight:bold">First Name: </span> 
+                <input type="text" [(ngModel)]="user.firstName" [disabled]="disable"/></p>
+
+                    <!-- {{user.firstName}} -->
+                <p><span style="color:blue;font-weight:bold">Last Name: </span>
+                <input type="text" [(ngModel)]="user.lastName" [disabled]="disable"/></p>
+
+                <p><span style="color:blue;font-weight:bold">Phone Number: </span>
+                <input type="tel" [(ngModel)]="user.phoneNumber" [disabled]="disable"/></p>
+
+                <p><span style="color:blue;font-weight:bold">Address: </span>
+                <input type="text" [(ngModel)]="user.address" [disabled]="disable"/></p>
+
+                <p><span style="color:blue;font-weight:bold">City: </span>
+                <input type="text" [(ngModel)]="user.city" [disabled]="disable"/></p>
+
+                <p><span style="color:blue;font-weight:bold">State: </span>
+                <input type="text" [(ngModel)]="user.state" [disabled]="disable"/></p>
+    
+                <p><span style="color:blue;font-weight:bold">Zip Code: </span>
+                <input type="number" [(ngModel)]="user.zipCode" [disabled]="disable"/></p>
+
+            
+
+                <button class="btn btn-primary" *ngIf="disable" (click)="editInfo()">Edit</button>
+                <button class="btn btn-success" *ngIf="!disable" (click)="saveInfo()">Save</button>
+                <br>
+
+       
+
+
+    </div>
+
+
+
+
+
 </div>

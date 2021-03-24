@@ -1,27 +1,52 @@
 <div class="content">
 
-  <button type="button" class="btn btn-primary" (click)="backClicked()">BACK</button>
+  <span (click)="backClicked()">
+    <!-- fix here -->
+    <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor" class="bi bi-arrow-left-short" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z"/>
+    </svg>
+  </span>  
   <div class="container">
       <div class="row">
         <div [ngStyle]="setMessageStyles()" *ngIf="emptyCart">{{message}}</div>
-        <div class="col-sm-3 column p-3" *ngFor="let product of products;">
+        <div class="col-sm-3 column p-3" *ngFor="let product of products| paginate: { itemsPerPage: 8, currentPage: p }  let i=index ">
           <div class="card" style="width: 16rem; " >
-            <img class="card-img-top card-img-top-250 one" src="..." alt="{{product.name}}">
+            <img class="card-img-top card-img-top-250 one" src="../../assets/image/coffe.jpg" alt="{{product.name}}">
 
             <div class="card-body">
               <h5 class="card-title">{{product.name}}</h5>
-              <p class="card-text">
-                CATAGORY: {{product.category}} 
-                QUANTITY: {{product.quantity}}
+              <div class="card-text">
+                CATAGORY: {{product.category}}
+                <br>
                 CONDITION: {{product.condition}}
-              </p>
-            
+                <!-- <span contenteditable="true">
+                  {{product.quantity}}
+                </span> -->
+                <br>
+                <label>QUANTITY:</label>
+                <span><input type="number" [(ngModel)]="product.quantity" [disabled]="product.id!==currentID"/></span>
+                
+                
+              </div>
+              <button type="button" class="btn btn-success" *ngIf="product.id!==currentID" (click)="editQuantity(product.id)">Edit</button>
+              <button type="button" class="btn btn-primary" *ngIf="product.id===currentID" (click)="saveQuantity(product)">Save</button>
+              <button type="button" class="btn btn-danger" (click)="removeFromCart(product.id)">Remove</button>
+
             </div>
 
           </div>
         </div>
+
+        <pagination-controls 
+        class="pagination"
+        (pageChange)="p = $event"
+        autoHide="true"
+        previousLabel="Previous"
+        nextLabel="Next"
+        *ngIf="!emptyCart"
+        ></pagination-controls>
       </div>
-      <button type="submit" class="block" [disabled]="emptyCart">CHECK OUT</button>
+      <button class="checkout-btn" type="submit" [disabled]="emptyCart">CHECK OUT</button>
     </div>
 
 </div>

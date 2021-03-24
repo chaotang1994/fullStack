@@ -22,14 +22,14 @@
                         </div>
                 </div>
             </div>
-
+            <div style= "overflow:auto; height: 600px;">
             <table class="table table-bordered">
                 <thead>
                     <tr>
                         <th>Id</th>
                         <th>Name</th>
                         <th>Category</th>
-                        <th>Quantity</th>
+                        <!-- <th>Quantity</th> -->
                         <th>Condition</th>
                         <th>Price</th>
                         <th>Action</th>
@@ -49,9 +49,9 @@
                     <td>
                         <input type="text" [(ngModel)]="p.category" [disabled]="!p.isEditable"/>
                     </td>
-                    <td>
+                    <!-- <td>
                         <input type="text" [(ngModel)]="p.quantity"  [disabled]="!p.isEditable"/>
-                    </td>
+                    </td> -->
                     <td>
                         <input type="text" [(ngModel)]="p.condition" [disabled]="!p.isEditable"/>
                     </td>
@@ -94,7 +94,7 @@
 
 
             </table>
-
+            </div>
 
         </div>
 

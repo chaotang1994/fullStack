@@ -13,8 +13,6 @@ public interface CustomerDAO {
 //	public Customer customerLogin(String email, String password) throws InvalidPasswordOrUsername;
 	public Customer printAccountInfo(String accountID);
 	public void emptyShoppingCart();
-	public void changePassword(String password);
-	public void changeAddress(String Address);
-	public void changePhone(String Phone);
+	public Boolean UpdateUser(Customer customer);
 	
 }

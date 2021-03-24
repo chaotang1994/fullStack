@@ -41,6 +41,7 @@ export class AdminHomeComponent implements OnInit {
     this.route.paramMap.subscribe(
       param=>{
         this.id=param.get('id');
+        console.log("admin-home id: "+this.id);
       }
     );
     if(this.id!=null){

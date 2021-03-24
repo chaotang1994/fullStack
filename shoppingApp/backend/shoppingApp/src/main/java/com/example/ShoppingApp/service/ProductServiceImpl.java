@@ -29,8 +29,8 @@ public class ProductServiceImpl implements ProductService{
 	}
 
 	@Override
-	public int addProductToCustomer(int productID, String id) {
-		return productDAO.addProductToCustomer(productID, id);
+	public int addProductToCustomer(Product product, String id) {
+		return productDAO.addProductToCustomer(product, id);
 	}
 	
 	@Override
@@ -47,6 +47,16 @@ public class ProductServiceImpl implements ProductService{
 	@Override
 	public boolean addProductFromAdmin(String admin_id, Product product) {
 		return productDAO.addProductFromAdmin(admin_id, product);
+	}
+
+	@Override
+	public int removeProductFromCustomer(String id, int product_id) {
+		return productDAO.removeProductFromCustomer(id, product_id);
+	}
+
+	@Override
+	public Integer updateQuantityFromUser(String user_id, Product product) {
+		return productDAO.updateQuantityFromUser(user_id, product);
 	}
 
 }
