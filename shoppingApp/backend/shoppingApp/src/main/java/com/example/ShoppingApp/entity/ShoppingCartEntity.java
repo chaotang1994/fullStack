@@ -34,11 +34,12 @@ public class ShoppingCartEntity {
 	
 	//tax?
 	
-	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.REFRESH)
-	@JoinTable(name="shopping_cart_has_product",
-	        joinColumns = @JoinColumn(name = "shopping_cart_id", referencedColumnName = "ID"),
-	        inverseJoinColumns = @JoinColumn(name = "product_id", referencedColumnName = "ID"))
-	private List<ProductEntity> productEntity = new ArrayList<>();
+//	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.REFRESH)
+//	@JoinTable(name="shopping_cart_has_product",
+//	        joinColumns = @JoinColumn(name = "shopping_cart_id", referencedColumnName = "ID"),
+//	        inverseJoinColumns = @JoinColumn(name = "product_id", referencedColumnName = "ID"))
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL ,mappedBy="shoppingCartEntity")
+	private List<ShoppingCartQuantityEntity> ShoppingCartQuantityEntity = new ArrayList<>();
 
 	
 	public int getId() {
@@ -57,14 +58,16 @@ public class ShoppingCartEntity {
 		this.totalPrice = totalPrice;
 	}
 
-	public List<ProductEntity> getProductEntity() {
-		return productEntity;
+	public List<ShoppingCartQuantityEntity> getShoppingCartQuantityEntity() {
+		return ShoppingCartQuantityEntity;
 	}
 
-	public void setProductEntity(List<ProductEntity> productEntity) {
-		this.productEntity = productEntity;
+	public void setShoppingCartQuantityEntity(List<ShoppingCartQuantityEntity> shoppingCartQuantityEntity) {
+		ShoppingCartQuantityEntity = shoppingCartQuantityEntity;
 	}
 
+
+	
 
 
 

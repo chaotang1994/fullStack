@@ -15,6 +15,8 @@ export class AdminModifyProductComponent implements OnInit {
   products:Product[]
   success:boolean
   searchProduct:any;
+  emptyList:boolean=false
+  serveDisconnected:boolean=false;
 
   // name:string;
   // category:string;
@@ -33,7 +35,22 @@ export class AdminModifyProductComponent implements OnInit {
     this.productService.getAllAdminProduct(this.admin_id).subscribe(
       products=>{
         this.products=products;
+        if(this.products===null||this.products.length==0){
+          this.emptyList=true;
+        }
+        
+      },
+      (rep:Response)=>{
+        if(rep.status==200){
+          console.log("Successfully!!!");
+        }else if(rep.status==404){
+          this.emptyList=true;
+        }else{
+          this.serveDisconnected=true;
+        }
       }
+
+
     )
 
   }
@@ -71,6 +88,15 @@ edit(product:Product):void{
   )
 }
 
+setMessageStyles() {
+  let styles = {
+    'color':'#65EB49',
+    'padding-left':'100px',
+    'padding-top':'100px',
+    'font-size':'300%',
+  };
+  return styles;
+}
 
   // edit(product_id:number):void{
   //   new Product(product_id,this.name,this.category,this.quantity,this.condition,this.price,this.imgURL);
@@ -99,6 +125,8 @@ edit(product:Product):void{
 
   // }
 
+
+ 
 
 
 }

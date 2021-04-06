@@ -11,7 +11,6 @@ import { RegisterComponent } from './register/register.component';
 import {ReactiveFormsModule, FormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
-import { ShoppingCartMenuComponent } from './shopping-cart-menu/shopping-cart-menu.component';
 import { LoginOptionComponent } from './login-option/login-option.component';
 import { AdminModifyProductComponent } from './admin-modify-product/admin-modify-product.component';
 import { AdminHomeComponent } from './admin-home/admin-home.component';
@@ -20,7 +19,9 @@ import { AdminModifyAddProductComponent } from './admin-modify-add-product/admin
 import { ItemFilterPipe } from './item-filter.pipe';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {NgxPaginationModule} from 'ngx-pagination';
-import { FilterListPipe } from './filter-list.pipe'; 
+import { FilterListPipe } from './filter-list.pipe';
+import { ConfirmComponent } from './confirm/confirm.component';
+import { AboutMeComponent } from './about-me/about-me.component'; 
 
 
 @NgModule({
@@ -33,13 +34,14 @@ import { FilterListPipe } from './filter-list.pipe';
     AdminAccountComponent,
     RegisterComponent,
     LoginComponent,
-    ShoppingCartMenuComponent,
     LoginOptionComponent,
     AdminModifyProductComponent,
     AdminHomeComponent,
     AdminModifyAddProductComponent,
     ItemFilterPipe,
-    FilterListPipe
+    FilterListPipe,
+    ConfirmComponent,
+    AboutMeComponent
 
 
   ],

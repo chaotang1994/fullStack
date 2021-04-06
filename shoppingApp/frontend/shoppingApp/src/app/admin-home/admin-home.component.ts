@@ -3,6 +3,7 @@ import {ProductService} from '../product.service';
 import {Product} from '../product';
 import {ActivatedRoute, Router} from '@angular/router';
 import{environment} from '../../environments/environment';
+import { SafeImage } from '../safe-image';
 
 @Component({
   selector: 'app-admin-home',
@@ -15,6 +16,8 @@ export class AdminHomeComponent implements OnInit {
   id:string;
   products:Product[]
   url:string;
+  emptyList:boolean=false;
+  serveDisconnected:boolean=false;
 
   constructor(
     private productService:ProductService,
@@ -49,10 +52,33 @@ export class AdminHomeComponent implements OnInit {
         products=>{
           console.log("response data: ", products);
           this.products=products;
+          if(this.products===null || this.products.length==0){
+              this.emptyList=true;
+          }
+        },
+        (rep:Response)=>{
+          if(rep.status==200){
+            console.log("Successfully!!!");
+          }else if(rep.status==404){
+            this.emptyList=true;
+          }else{
+            this.serveDisconnected=true;
+          }
         }
       );
     }
 
+
+  }
+
+    setMessageStyles() {
+    let styles = {
+      'color':'#65EB49',
+      'padding-left':'100px',
+      'padding-top':'100px',
+      'font-size':'300%',
+    };
+    return styles;
   }
 
 

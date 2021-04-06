@@ -38,7 +38,7 @@ public class AdminEntity {
 	private String password;
 	
 //	@JsonIgnore
-	@OneToMany(mappedBy="adminEntity",cascade=CascadeType.REFRESH)
+	@OneToMany(mappedBy="adminEntity",cascade=CascadeType.ALL)
 	private List<ProductEntity> adminProduct =new ArrayList<ProductEntity>();
 
 	public int getId() {

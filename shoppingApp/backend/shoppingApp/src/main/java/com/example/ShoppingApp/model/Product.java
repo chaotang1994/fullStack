@@ -1,5 +1,6 @@
 package com.example.ShoppingApp.model;
 
+import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,9 +19,9 @@ public class Product {
 	private int quantity;
 	private String condition;
 	private int price;
-	private String imgURL;
+	private byte[] imgURL;
 
-	private List<ShoppingCart> shoppingCart = new ArrayList<>();
+	private List<ShoppingCartQuantityEntity> ShoppingCartQuantityEntity = new ArrayList<>();
 
 	private AdminEntity adminEntity;
 
@@ -62,19 +63,17 @@ public class Product {
 		this.condition = condition;
 	}
 
-	public String getImgURL() {
+	public byte[] getImgURL() {
 		return imgURL;
 	}
-	public void setImgURL(String imgURL) {
+	public void setImgURL(byte[] imgURL) {
 		this.imgURL = imgURL;
 	}
-
-	
-	public List<ShoppingCart> getShoppingCart() {
-		return shoppingCart;
+	public List<ShoppingCartQuantityEntity> getShoppingCartQuantityEntity() {
+		return ShoppingCartQuantityEntity;
 	}
-	public void setShoppingCart(List<ShoppingCart> shoppingCart) {
-		this.shoppingCart = shoppingCart;
+	public void setShoppingCartQuantityEntity(List<ShoppingCartQuantityEntity> shoppingCartQuantityEntity) {
+		ShoppingCartQuantityEntity = shoppingCartQuantityEntity;
 	}
 	public AdminEntity getAdminEntity() {
 		return adminEntity;

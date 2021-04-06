@@ -7,8 +7,11 @@
                 </div>
 
                 <div class="content">
-                    <button type="button" class="btn btn-outline-info btn-block" [routerLink]="['/login',type]" routerLinkActive="active">Sign In</button>
-                    <button type="button" class="btn btn-outline-info btn-block" [routerLink]="['/register',type]" routerLinkActive="active">Sign Up</button>
+                    <button type="button" class="btn btn-outline-dark btn-block" [routerLink]="['/login',type]" routerLinkActive="active">Sign In</button>
+                    <button type="button" class="btn btn-outline-dark btn-block" [routerLink]="['/register',type]" routerLinkActive="active" [disabled]="disable" [ngClass]="{'btn-outline-danger': disable}">Sign Up</button>
+                 
+                    <div class="button_slide slide_right" (click)="goBack()">Back</div>
+
                 </div>
                 
 

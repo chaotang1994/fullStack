@@ -1,5 +1,6 @@
 package com.example.ShoppingApp.api;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +33,7 @@ public class productAPI {
 	
 	
 	@PostMapping(value="/addProductFromAdmin/{admin_name}")
-	public ResponseEntity<Boolean> addProductFromAdmin(@PathVariable("admin_name") String admin_name, @RequestBody Product product){
+	public ResponseEntity<Boolean> addProductFromAdmin(@PathVariable("admin_name") String admin_name, @RequestBody Product product) throws UnsupportedEncodingException{
 		System.out.println("admin_name: "+ admin_name);
 		System.out.println("product name: "+ product.getName());
 		System.out.println("product quantity: "+ product.getQuantity());

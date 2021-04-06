@@ -12,13 +12,17 @@
 }
 
 
+h2{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
 
 .table-wrapper {
     width: 100%;
     height: 95%;
     margin: 30px auto;
     background: white;
-    padding: 20px;	
+    padding: 20px;
     box-shadow: 0 1px 1px rgba(0,0,0,.05);
     display: block;
 }
@@ -31,7 +35,7 @@
 .search input{ 
     border-radius: 20px;
     border-color: black;
-    color:chartreuse;
+    color:black;
 }
 
 .search input::placeholder{ 
@@ -49,6 +53,8 @@
     min-width: 100px;
     border-radius: 50px;
     line-height: 13px;
+    background-color:rgb(250, 200, 90);
+    border:none;
 }
 
 
@@ -84,21 +90,22 @@ table.table tr button{
 }
 
 table.table .button_edit{
-    background-color: greenyellow;
+    background-color: rgb(47, 255, 109);
     border-radius: 8px;
 }
 
 table.table .button_remove{
-    background-color:lightcoral;
+    background-color:rgb(255, 90, 78);
     border-radius: 8px;
 }
 
 
 table.table tr .button:hover {
-    background-color: lightyellow; /* Green */
-    color: rgb(248, 61, 61);
+    background-color: rgb(250, 200, 90);; /* Green */
+    color: rgb(0, 0, 0);
     border: none;
     text-decoration: none;
+    border:black;
 
 }
 

@@ -1,5 +1,6 @@
 package com.example.ShoppingApp.service;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import com.example.ShoppingApp.exception.IdNotExits;
@@ -11,7 +12,7 @@ public interface ProductService {
 	public int addProductToCustomer(Product product, String id);
 	public boolean removeProductFromAdmin(Integer id,String admin_id);
 	public boolean editProductFromAdmin(String admin_id, Product product);
-	public boolean addProductFromAdmin(String admin_name, Product product);
+	public boolean addProductFromAdmin(String admin_name, Product product) throws UnsupportedEncodingException;
 	public int removeProductFromCustomer(String id, int product_id);
 	public Integer updateQuantityFromUser(String user_id, Product prodcut);
 }

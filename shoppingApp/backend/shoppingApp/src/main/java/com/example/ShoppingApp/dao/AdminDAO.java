@@ -13,7 +13,6 @@ public interface AdminDAO {
 	public ArrayList<Product> getProducts();
 	public Product deleteProduct(Product product);
 	public Product updateProduct(Product product);
-	public Admin addProductAndAdmin(Admin admin);
 	public String createAdmin(Admin admin) throws Exception;
 	public String authentication(String username, String password) throws InvalidPasswordOrUsername, EmailNotExits;
 	String getPasswordByEmail(String email) throws EmailNotExits;

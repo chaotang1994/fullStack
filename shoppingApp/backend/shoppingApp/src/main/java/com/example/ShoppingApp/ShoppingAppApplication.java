@@ -124,7 +124,6 @@ public class ShoppingAppApplication implements CommandLineRunner{
 		product.setCategory("electronics");
 		product.setQuantity(3);
 		product.setCondition("new");
-		product.setImgURL("iphone_img");
 		productList.add(product);
 		
 		
@@ -133,7 +132,6 @@ public class ShoppingAppApplication implements CommandLineRunner{
 		product1.setCategory("electronics");
 		product1.setQuantity(2);
 		product1.setCondition("new");
-		product1.setImgURL("galaxy_img");
 		productList.add(product1);
 		
 		Product product2 = new Product();
@@ -141,7 +139,6 @@ public class ShoppingAppApplication implements CommandLineRunner{
 		product2.setCategory("electronics");
 		product2.setQuantity(6);
 		product2.setCondition("new");
-		product2.setImgURL("googlePixle_img");
 		productList.add(product2);
 		
 		
@@ -150,7 +147,6 @@ public class ShoppingAppApplication implements CommandLineRunner{
 		product2.setCategory("electronics");
 		product2.setQuantity(10);
 		product2.setCondition("new");
-		product2.setImgURL("googlePixle_img");
 		productList.add(product3);
 		
 		
@@ -159,24 +155,12 @@ public class ShoppingAppApplication implements CommandLineRunner{
 		product2.setCategory("electronics");
 		product2.setQuantity(1);
 		product2.setCondition("used");
-		product2.setImgURL("xiaomi_img");
 		productList.add(product4);
 		
 		admin.setProduct(productList);
 		
-		Admin a =adminService.addProductAndAdmin(admin);
-		System.out.println(a.getId());
-		System.out.println(a.getName());
-		System.out.println(a.getUsername());
-		System.out.println("object1  "+a);
-		List<Product> prod=a.getProduct();
-		System.out.println("--------------------");
 
-		for(Product p: prod) {
-			System.out.println(p.getId());
-			System.out.println(p.getName());
-			
-		}
+
 		System.out.println("Product successfully added!!!!");
 
 	}

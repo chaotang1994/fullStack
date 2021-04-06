@@ -1,5 +1,5 @@
 .content{
-    background-color: hsl(28, 97%, 43%);
+    background: linear-gradient(to left bottom, hsl(90, 82%, 85%) 0%,hsl(150, 91%, 86%) 100%);
     width:100vw;
     min-height:100vh;
 }
@@ -7,12 +7,19 @@
 
 .card {
     /* Add shadows to create the "card" effect */
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.8);
+    box-shadow: 0 3px 3px 0 rgba(0,0,0,0.8);
     transition: 0.3s;
+    text-align: left;
+
   }
+.card-title{
+    font:bold;
+    font-size: x-large;
+    border-bottom:2px solid gray;
+}
 
 .card:hover {
-    box-shadow: 0 16px 16px 0 rgba(255, 195, 195, 0.904);
+    box-shadow: 0 4px 4px 0 rgba(255, 143, 109, 0.904);
 }
 .back_icon{
     width:80px;
@@ -25,12 +32,16 @@ svg:hover{
     cursor:pointer;
 }
 
+.text-span{
+    font-weight:bold;
+}
+
 
 .checkout-btn {
     width: 100%;
     margin-bottom: 10px;
     border: none;
-    background-color: #4CAF50;
+    background-color: #fbff07;
     padding: 14px 28px;
     font-size: 16px;
     cursor: pointer;
@@ -38,7 +49,7 @@ svg:hover{
 }
 
 .checkout-btn:hover:enabled{
-    box-shadow: 4px 4px 4px 4px rgba(15, 15, 15, 0.8);
+    box-shadow: 2px 2px 2px 2px rgba(15, 15, 15, 0.8);
     transition: 0.5s;
 }
 
@@ -48,7 +59,7 @@ svg:hover{
 }
 
 .checkout-btn:active {
-    background-color: #3e8e41;
+    background-color: #fbff07;
     box-shadow: 0 5px #666;
     transform: translateY(4px);
   }
@@ -56,6 +67,10 @@ svg:hover{
 button{
     height: auto;
     border-radius: 2px;
+}
+
+button:hover{
+    opacity: 0.8;
 }
 
 input{
@@ -77,4 +92,21 @@ input:disabled::-webkit-inner-spin-button {
 
 input[type=number] {
     -moz-appearance: textfield;
+}
+
+img{
+    height:340px;
+}
+
+ngb-alert{
+    width:75%;
+    text-align: center;
+    margin-left:190px;
+    margin-top:10px;
+}
+
+.total{
+    margin-left:120px;
+    font-size:20px;
+    font-weight: bold;
 }

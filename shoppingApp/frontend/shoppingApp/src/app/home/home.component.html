@@ -85,27 +85,35 @@
 
   <div class="info" *ngIf="serveDisconnected">Serve Disconnected!!!</div>
   <div class="info" *ngIf="noProductListFound">Currently product list is Empty!!!</div>
+  <ngb-alert #selfClosingAlert *ngIf="successAdded" type="success" (closed)="successAdded=false && successMessage=''">{{ successMessage }}
+  </ngb-alert>
+  <ngb-alert #selfClosingAlert *ngIf="successSave" type="success" (closed)="successSave=false && SuccessSaveMessage=''">{{ SuccessSaveMessage }}
+  </ngb-alert>
 
   <div class="container">
       <div class="row">
         <div class="col-sm-3 column p-4" *ngFor="let product of products |  itemFilter : searchProduct | paginate: { itemsPerPage: 8, currentPage: p } ">
+    
+      
+ 
           <div class="card" style="width: 16rem; " >
-            <img class="card-img-top card-img-top-250 one" src="assets/image/koi-fish.jpg" alt="{{product.name}}">
+            <img class="card-img-top card-img-top-250 one" src="{{'data:image/png;base64,'+product.imgURL}}" alt="{{product.name}}">
 
             <div class="card-body">
               <h5 class="card-title">{{product.name}}</h5>
               <p class="card-text">
-                CATAGORY: {{product.category}} 
+                <span class="text-span">Category:</span> {{product.category}} 
                 <br>
-                CONDITION: {{product.condition}}
+                <span class="text-span">Condition:</span> {{product.condition}}
                 <br>
-                <label>QUANTITY:</label>
+                <span class="text-span">Price:</span> {{product.price | currency}}
+                <br>
+                <label><span class="text-span">Quantity:</span></label>
                 <span><input class="quantity" type="number" [(ngModel)]="product.quantity" [disabled]="product.id!==currentID"/></span>
               </p>
               <button type="button" class="btn btn-success" *ngIf="product.id!==currentID" (click)="editQuantity(product.id)">Edit</button>
               <button type="button" class="btn btn-warning" *ngIf="product.id===currentID" (click)="saveQuantity()">Save</button>
               <button type="button" class="btn btn-primary" (click)="addToCart(product)">Add to Cart</button>
-            
             </div>
 
           </div>

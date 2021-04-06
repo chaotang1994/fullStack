@@ -45,7 +45,7 @@ public class CustomerEntity {
 	private String phoneNumber;
 	
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="FK_SHOPPINGCART", referencedColumnName="ID")
+	@JoinColumn(name="shopping_cart_ID", referencedColumnName="ID")
 	private ShoppingCartEntity shoppingCart;
 
 	public String getEmailID() {

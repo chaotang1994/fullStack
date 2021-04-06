@@ -1,6 +1,8 @@
 package com.example.ShoppingApp.entity;
 
+import java.sql.Blob;
 import java.util.ArrayList;
+
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -11,9 +13,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.sql.rowset.serial.SerialBlob;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -41,27 +46,27 @@ public class ProductEntity {
 	@Column(name="PRODUCT_PRICE")
 	private int price;
 	
-	
-	@Column(name="PRODUCT_IMG", length=1000)
+	@Lob
+	@Column(name="PRODUCT_IMG",columnDefinition = "LONGBLOB")
 	private byte[] imgURL;
 	
-	
-	public int getPrice() {
-		return price;
-	}
-	public void setPrice(int price) {
-		this.price = price;
-	}
-	
-
-	@ManyToMany(mappedBy = "productEntity")
-	private List<ShoppingCartEntity> shoppingCartEntity = new ArrayList<>();
+	@OneToMany(cascade = CascadeType.ALL ,mappedBy = "productEntity")
+	private List<ShoppingCartQuantityEntity> ShoppingCartQuantityEntity = new ArrayList<>();
 	
 	
 	@ManyToOne
 	@JoinColumn(name="admin_ID")
 	private AdminEntity adminEntity;
 	
+	
+	
+
+	public int getPrice() {
+		return price;
+	}
+	public void setPrice(int price) {
+		this.price = price;
+	}
 	
 	
 	public String getCondition() {
@@ -89,33 +94,33 @@ public class ProductEntity {
 	public void setCategory(String category) {
 		this.category = category;
 	}
-	public int getQuantity() {
-		return quantity;
-	}
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
-	}
-
-	
-	
 	public byte[] getImgURL() {
 		return imgURL;
 	}
 	public void setImgURL(byte[] imgURL) {
 		this.imgURL = imgURL;
 	}
+	public int getQuantity() {
+		return quantity;
+	}
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+	
+
 	public AdminEntity getAdminEntity() {
 		return adminEntity;
 	}
 	public void setAdminEntity(AdminEntity adminEntity) {
 		this.adminEntity = adminEntity;
 	}
-	public List<ShoppingCartEntity> getShoppingCartEntity() {
-		return shoppingCartEntity;
+	public List<ShoppingCartQuantityEntity> getShoppingCartQuantityEntity() {
+		return ShoppingCartQuantityEntity;
 	}
-	public void setShoppingCartEntity(List<ShoppingCartEntity> shoppingCartEntity) {
-		this.shoppingCartEntity = shoppingCartEntity;
+	public void setShoppingCartQuantityEntity(List<ShoppingCartQuantityEntity> shoppingCartQuantityEntity) {
+		ShoppingCartQuantityEntity = shoppingCartQuantityEntity;
 	}
+
 
 
 	

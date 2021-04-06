@@ -1,9 +1,17 @@
 <div class="main">
     
-    
+    <div class="back_icon">
+        <span (click)="backClicked()">
+            <!-- fix here -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor" class="bi bi-arrow-left-short" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z"/>
+            </svg>
+        </span>
+    </div>
+
    <div class="container">
       <div class=logo>
-        Xshop  ({{type}})
+        Xshop  <span>({{type}})</span>
       </div>
 <!-- question in this form -->
         <div *ngIf="error" [ngStyle]="{'color':'red'}">{{errorMessage}}</div>
@@ -30,7 +38,7 @@
                              -->
                            
                              <div class="form-group" >
-                                 <button type="submit" class="btn btn-outline-info btn-block">Sign In</button>
+                                 <button type="submit" class="btn btn-outline-dark btn-block">Sign In</button>
 
                                  <span style="width:50%; text-align:left;  cursor: pointer;"><a class="small-text">Forgot password?</a></span>
                                  <br>

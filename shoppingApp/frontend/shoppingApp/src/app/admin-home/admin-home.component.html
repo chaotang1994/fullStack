@@ -2,23 +2,28 @@
 
 <div class="home">
 
-    <!-- products list-->
+  <div [ngStyle]="setMessageStyles()" *ngIf="serveDisconnected">Serve Disconnected!!!</div>
+
+
+  <div [ngStyle]="setMessageStyles()" *ngIf="emptyList">No items being sell!!!</div>
+  <!-- products list-->
       <div class="container">
         <div class="row">
 
             <div class="col-sm-3 col-sm-3 p-4" *ngFor="let product of products;">
               <div class="card" style="width: 16rem; " >
-                <img class="card-img-top card-img-top-250 one" src="assets/image/koi-fish.jpg" alt="{{product.name}}">
-
+                <!-- <img class="card-img-top card-img-top-250 one" src="data:image/png;base64, ${product.image}" alt="{{product.name}}"> -->
+                <img class="card-img-top card-img-top-250 one" src="{{'data:image/png;base64,'+product.imgURL}}" alt="{{product.name}}">
                 <div class="card-body">
                   <h5 class="card-title">{{product.name}}</h5>
                   <p class="card-text">
-                    Category: {{product.category}} 
+                    <span class="text-span">Category:</span> {{product.category}} 
                     <br>
-                    Condition: {{product.condition}}
+                    <span class="text-span">Condition:</span> {{product.condition}}
                     <br>
-                    Price: {{product.price | currency}}
+                    <span class="text-span">Price:</span> {{product.price | currency}}
                   </p>
+                 
                   <!-- <button class="btn btn-primary" (click)="addToCart(product.id)">Add to Cart</button> -->
                 
                 </div>

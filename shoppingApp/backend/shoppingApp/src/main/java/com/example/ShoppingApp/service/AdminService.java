@@ -14,7 +14,6 @@ public interface AdminService {
 	public Product deleteProduct(Product product);
 	public Product updateProduct(Product product);
 	public ArrayList<Product> getProducts();
-	public Admin addProductAndAdmin(Admin admin);
 	public String createAdmin(Admin admin) throws Exception;
 	public String authentication(String username, String password) throws InvalidPasswordOrUsername, EmailNotExits;
 

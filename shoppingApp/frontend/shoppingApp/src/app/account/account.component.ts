@@ -38,7 +38,7 @@ export class AccountComponent implements OnInit {
     }
   }
 
-  UserDetails(id){
+  UserDetails(id:string){
     this.userService.UserDetails(id).subscribe(
       userInfo=>{
         this.user=userInfo;
