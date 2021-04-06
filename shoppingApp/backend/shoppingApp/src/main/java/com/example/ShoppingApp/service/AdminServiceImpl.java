@@ -40,11 +40,6 @@ public class AdminServiceImpl implements AdminService{
 	}
 
 	@Override
-	public Admin addProductAndAdmin(Admin admin) {
-		return admin_accountDAO.addProductAndAdmin(admin);
-	}
-
-	@Override
 	public Product deleteProduct(Product product) {
 		// TODO Auto-generated method stub
 		return null;

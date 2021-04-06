@@ -1,21 +1,27 @@
 div.page{
     /* background: radial-gradient(ellipse at center, #edf1f5 1%, #14171a 95%);  */
-    background-color: hsl(28, 97%, 43%);
+    background: linear-gradient(to left bottom, hsl(90, 82%, 85%) 0%,hsl(150, 91%, 86%) 100%);
     height:calc(100vh);
     width:100%;
 }
 
 .title{
     font-size: 80px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
+/* span{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+} */
 .content{
-    background-color: rgba(241, 90, 90,0.9);
+    background-color: rgba(245, 160, 81, 0.9);
     width:900px;
     height: 600px;
     margin-right: auto;
     margin-left: auto;
     text-align: center;
+    border-radius: 8px;
+    border: 3px solid orange;
 }
 
 
@@ -42,7 +48,7 @@ button.btn.btn-success{
 }
 
 input{
-    background-color: rgba(221, 243, 24, 0.9);
+    background-color: rgba(217, 219, 64, 0.9);
     border-radius:4px;
     border-style: none;
     width: 16%;

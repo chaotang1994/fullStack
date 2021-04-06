@@ -50,7 +50,7 @@ public class CustomerAPI {
 	
 
 	
-	@PostMapping(value="/printAccountInfo")
+	@PostMapping(value="/printAccountInfo")//change to get AcccountInfo
 	public ResponseEntity<Customer> printAccountInfo(@RequestBody String id){
 		Customer customer = customerService.printAccountInfo(id);
 		if(customer!=null) {

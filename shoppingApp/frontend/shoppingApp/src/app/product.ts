@@ -5,7 +5,7 @@ export class Product {
     quantity:number;
     condition:string;
     price:number;
-    imgURL:string;
+    imgURL:any;
 
     constructor(
         id:number,
@@ -14,7 +14,7 @@ export class Product {
         quantity:number,
         condition:string,
         price:number,
-        imgURL:string,
+        imgURL:any,
 
     ){
         this.id=id;
@@ -67,10 +67,10 @@ export class Product {
         this.condition = condition;
     }
 
-    public get _imgURL(): string {
+    public get _imgURL(): any {
         return this.category;
     }
-    public set _imgURL(imgURL: string) {
+    public set _imgURL(imgURL: any) {
         this.imgURL = imgURL;
     }
 

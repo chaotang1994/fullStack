@@ -4,6 +4,7 @@ import { UserService } from '../user.service';
 import { first } from 'rxjs/operators';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthenticationService } from '../authentication.service';
+import {Location} from '@angular/common';
 
 
 @Component({
@@ -25,7 +26,9 @@ export class LoginComponent implements OnInit {
     private userService:UserService,
     private router : Router,
     private route:ActivatedRoute,
-    private authenticationService:AuthenticationService
+    private authenticationService:AuthenticationService,
+    private _location: Location,
+
   ) { 
  
 
@@ -95,7 +98,9 @@ export class LoginComponent implements OnInit {
 
   }
 
-
+  backClicked() {
+    this._location.back();
+  }
 
 
 

@@ -2,39 +2,62 @@
 
 
 div.main{
-/* background: radial-gradient(ellipse at center, #edf1f5 1%, #14171a 95%);  */
-background-color: black;
-height:calc(100vh);
-width:100%;
+    height:calc(100vh);
+    background: rgb(131,58,180);
+    background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(120,245,241,1) 0%, rgba(252,176,69,1) 100%);
+    width:100%;
 }
 
 .logo{
     padding-bottom: 20px;
-    font-family: "Lato", sans-serif;
-    color: aquamarine;
+    font-size: 250%;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: Black;
 }
 
+.logo span{
+    font-size:large;
+}
+
+.container{
+    align-items: center;
+}
 
 a {
-	color:aquamarine;
+	color:Black;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+
 }
 
 a:hover {
 	text-decoration: underline;
 }
 
-.span input{
-    background-color: red;
+input{
+    border-color:black;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color:gray;
+
 }
 
 div.span{
-    font-family: "Lato", sans-serif;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 
 }
-
-
 
 div.container{
     padding-top: 200px;
     width: 30%;
+}
+
+.back_icon{
+    width:80px;
+    height: 80px;
+    padding-top:20px;
+    color:rgba(0, 0, 0, 0.884);
+}
+
+svg:hover{
+    color:lightskyblue;
+    cursor:pointer;
 }

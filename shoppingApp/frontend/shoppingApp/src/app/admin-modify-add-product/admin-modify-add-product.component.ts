@@ -56,7 +56,7 @@ export class AdminModifyAddProductComponent implements OnInit {
       product_name:['',[Validators.required,Validators.minLength(1)]],
       product_quantity:[1],
       product_price:['',[Validators.required,Validators.min(1)]],
-      product_image:[null,[Validators.required]],
+      product_image:['',[Validators.required]],
       product_category:['',[Validators.required,Validators.minLength(1)]],
       product_condition:['',[Validators.required,Validators.minLength(1)]],
     });
@@ -116,14 +116,31 @@ export class AdminModifyAddProductComponent implements OnInit {
     if (this.addProductForm.invalid) {
       return;
     }
-    console.log("productForm "+this.addProductForm.value);
+   
+    console.log("base64 "+this.addProductForm.value.product_image);
+
+    let base64=this.addProductForm.value.product_image;
+    base64=base64.substring(base64.indexOf(",")+1);
+
+    console.log("base64222 "+base64);
+
+
+    // const byteCharacters = atob(base64);
+    // const byteNumbers = new Array(byteCharacters.length);
+    // for (let i = 0; i < byteCharacters.length; i++) {
+    //     byteNumbers[i] = byteCharacters.charCodeAt(i);
+    // }
+    // const byteArray = new Uint8Array(byteNumbers);
+    // this.addProductForm.value.product_image=byteArray;
+    // console.log("image "+byteArray);
+
     let product = new Product(-1,
     this.addProductForm.value.product_name,
     this.addProductForm.value.product_category,
     this.addProductForm.value.product_quantity,
     this.addProductForm.value.product_condition,
     this.addProductForm.value.product_price,
-    this.addProductForm.value.product_image
+    base64
     );
 
     this.productService.addProductFromAdmin(this.admin_id, product).subscribe(

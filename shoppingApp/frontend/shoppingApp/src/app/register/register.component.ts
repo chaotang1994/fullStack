@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from '../user.service';
 import { first } from 'rxjs/operators';
 import { Name } from '../name';
+import {Location} from '@angular/common';
 
 
 
@@ -23,7 +24,9 @@ export class RegisterComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private userService:UserService,
-    private route:ActivatedRoute
+    private route:ActivatedRoute,
+    private _location: Location,
+
   ) { }
 
   ngOnInit(): void {
@@ -88,6 +91,10 @@ export class RegisterComponent implements OnInit {
 
   ngOnDestroy() {
     // unsubscribe to avoid memory leaks
+  }
+
+  backClicked() {
+    this._location.back();
   }
 
 }

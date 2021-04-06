@@ -1,5 +1,6 @@
 package com.example.ShoppingApp.dao;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import com.example.ShoppingApp.exception.IdNotExits;
@@ -12,7 +13,7 @@ public interface ProductDAO {
 	public String updateCategory(String category);
 	public String updateCondition(String condition);
 	public List<Product> getProductsFromAdmin(String id) throws Exception;
-	public boolean addProductFromAdmin(String admin_name, Product product);
+	public boolean addProductFromAdmin(String admin_name, Product product) throws UnsupportedEncodingException;
 	public List<Product> getProductsFromShoppingCart(String id) throws Exception;
 	public int addProductToCustomer(Product product, String id);
 	public boolean removeProductFromAdmin(Integer id, String admin_id);

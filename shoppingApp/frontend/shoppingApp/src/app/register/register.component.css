@@ -5,13 +5,14 @@
 
 div.main{
     /* background: radial-gradient(ellipse at center, #edf1f5 1%, #14171a 95%);  */
-    background-color: black;
+    background: rgb(131,58,180);
+    background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(120,245,241,1) 0%, rgba(252,176,69,1) 100%);
     height:calc(100vh);
     width:100%;
 }
 
 label, h2{
-    color:aquamarine;
+    color:rgb(59, 112, 226);
 }
 
 
@@ -19,3 +20,15 @@ label, h2{
     border-color: rgb(216, 12, 12);
     color: rgb(230, 14, 14);
 } */
+
+.back_icon{
+    width:80px;
+    height: 80px;
+    padding-top:20px;
+    color:rgb(59, 112, 226);
+}
+
+svg:hover{
+    color:lightskyblue;
+    cursor:pointer;
+}

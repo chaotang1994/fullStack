@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from '../product.service';
 import { Product } from '../product';
 import {Location} from '@angular/common';
+import {NgbAlert} from '@ng-bootstrap/ng-bootstrap';
+import {Subject} from 'rxjs';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -18,15 +20,24 @@ export class ShoppingCartComponent implements OnInit {
   edit:boolean=false;
   p:number=1;
   currentID:number=-1;
+  successMessage:string="";
+  SuccessSaveMessage:String="";
+  successSave=false;
+  successRemove:boolean=false;
+  total:number=0;
+  @ViewChild('selfClosingAlert', {static: false}) selfClosingAlert: NgbAlert;
 
 
   constructor(
     private activatedRoute:ActivatedRoute,
     private productService:ProductService,
-    private _location:Location
+    private _location:Location,
+    private router:Router
   ) { }
 
   ngOnInit(): void {
+    setTimeout(() => this.selfClosingAlert.close(), 5000);
+
     this.activatedRoute.paramMap.subscribe(
       params=>{
         this.id=params.get('id');
@@ -40,6 +51,7 @@ export class ShoppingCartComponent implements OnInit {
     this.productService.getShoppingCartList(this.id).subscribe(
       data=>{
         this.products=data;
+        this.getTotal();
       },
       (res:Response)=>{
         if(res.status==404){
@@ -71,18 +83,22 @@ export class ShoppingCartComponent implements OnInit {
     this.productService.removeProductFromUser(product_id,this.id).subscribe(
       result=>{
         console.log("remove from cart: "+ result);
+        console.log("return id: "+result);
+        this.successRemove=true;
         if(result===product_id){
+          this.successMessage="Product id ("+ product_id+") Successfully removed";
           for(let p=0; p<this.products.length; p++){
             if(this.products[p].id===product_id){
               this.products.splice(p,1);
               if(this.products.length==0){
                 this.ngOnInit();
+                }
               }
             }
-          }
           }else{
             console.log("remove fail!!!");
           }
+
       }
     );
   }
@@ -91,7 +107,11 @@ export class ShoppingCartComponent implements OnInit {
     this.currentID=-1;
     this.productService.updateQuantityFromUser(this.id,product).subscribe(
       rep=>{
-        console.log("reponse: "+ rep);
+        if(rep==product.id){
+          console.log("reponse: "+ rep);
+          this.successSave=true;
+          this.SuccessSaveMessage="Product Quantity Save Successfully!";
+        }
       }
     );
   }
@@ -102,9 +122,19 @@ export class ShoppingCartComponent implements OnInit {
     }
     this.currentID=product_id;
   }
+
+  comfirm(){
+    this.router.navigate(['/confirm',this.id,this.total]);
+  }
   
   backClicked() {
     this._location.back();
+  }
+
+  getTotal(){
+    for(let i=0; i<this.products.length; i++){
+      this.total+=this.products[i].price;
+    }
   }
 
 }

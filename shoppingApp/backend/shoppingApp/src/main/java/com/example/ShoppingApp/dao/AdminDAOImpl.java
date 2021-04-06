@@ -104,28 +104,28 @@ public class AdminDAOImpl implements AdminDAO{
 		return null;
 	}
 
-	public Admin addProductAndAdmin(Admin admin) {
-		AdminEntity adminEntity = new AdminEntity();
-		adminEntity.setName(admin.getName());
-		adminEntity.setUsername(admin.getUsername());
-		adminEntity.setPassword(admin.getPassword());
-		adminEntity.setId(admin.getId());
-		List<ProductEntity> list = new ArrayList();
-		for(Product p: admin.getProduct()) {
-			ProductEntity productEntity= new ProductEntity();
-			productEntity.setName(p.getName());
-			productEntity.setCategory(p.getCategory());
-			productEntity.setCondition(p.getCondition());
-			productEntity.setQuantity(p.getQuantity());
-			productEntity.setImgURL("".getBytes());
-			System.out.println(p.getName());
-			list.add(productEntity);
-		}
-		
-		adminEntity.setAdminProduct(list);
-		entityManager.persist(adminEntity);
-		return admin;
-	}
+//	public Admin addProductAndAdmin(Admin admin) {
+//		AdminEntity adminEntity = new AdminEntity();
+//		adminEntity.setName(admin.getName());
+//		adminEntity.setUsername(admin.getUsername());
+//		adminEntity.setPassword(admin.getPassword());
+//		adminEntity.setId(admin.getId());
+//		List<ProductEntity> list = new ArrayList();
+//		for(Product p: admin.getProduct()) {
+//			ProductEntity productEntity= new ProductEntity();
+//			productEntity.setName(p.getName());
+//			productEntity.setCategory(p.getCategory());
+//			productEntity.setCondition(p.getCondition());
+//			productEntity.setQuantity(p.getQuantity());
+//			productEntity.setImgURL("".getBytes());
+//			System.out.println(p.getName());
+//			list.add(productEntity);
+//		}
+//		
+//		adminEntity.setAdminProduct(list);
+//		entityManager.persist(adminEntity);
+//		return admin;
+//	}
 
 
 

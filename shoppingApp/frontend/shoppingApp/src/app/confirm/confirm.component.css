@@ -1,0 +1,17 @@
+.confirmPage{
+    position: relative;
+}
+.container{
+    position: absolute;
+    top:100px;
+    left:100px;
+}
+
+p{
+    color:red;
+}
+
+span{
+    font-size:x-large;
+    font-weight:650;
+}

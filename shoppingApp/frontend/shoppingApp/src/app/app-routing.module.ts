@@ -13,6 +13,7 @@ import {AdminModifyProductComponent} from './admin-modify-product/admin-modify-p
 import { AdminHomeComponent } from '../app/admin-home/admin-home.component';
 import { CommonModule } from '@angular/common';
 import {AdminModifyAddProductComponent} from '../app/admin-modify-add-product/admin-modify-add-product.component';
+import {ConfirmComponent} from '../app/confirm/confirm.component';
 
 
 const routes: Routes = [
@@ -30,11 +31,9 @@ const routes: Routes = [
       { path: 'admin-home', component: AdminHomeComponent},
       ]
   },
-  // { path: 'admin-modify-product/:id', component: AdminModifyProductComponent},
-  // { path: 'admin-home/:id', component: AdminHomeComponent},
   { path: 'admin-modify-add-product/:id', component: AdminModifyAddProductComponent},
   // { path: '**', component: LoginOptionComponent },
-
+  {path: 'confirm/:id/:total', component: ConfirmComponent}
 ];
 
 @NgModule({

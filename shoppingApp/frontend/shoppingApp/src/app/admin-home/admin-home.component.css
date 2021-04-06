@@ -5,12 +5,27 @@
 }
 
 .card{
-    box-shadow:0 4px 8px 0 rgba(0,0,0,0.8);
-    transition:0.3s;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.8);
+    transition: 0.3s;
+    text-align: left;
 
+}
 
+.card-title{
+    font:bold;
+    font-size: x-large;
+    border-bottom:2px solid gray;
 }
 
 .card:hover{
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.8);
+}
+
+img{
+    height:340px;
+
+}
+
+.text-span{
+    font-weight: bold;
 }

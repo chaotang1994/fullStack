@@ -39,49 +39,6 @@ public class adminAPI {
 		return new ResponseEntity<String>(id,HttpStatus.OK);
 	}
 
-
-	
-	
-	@GetMapping(value="/addProductAndAdmin")
-	public ResponseEntity<Admin> getProductsFromAdmin() {
-		List<Product> productList = new ArrayList<Product>();
-		Admin admin = new Admin();
-		admin.setUsername("Andy2316");
-		admin.setName("Andy");
-		admin.setPassword("andy2316");
-		
-		Product product = new Product();
-		product.setName("iphone10");
-		product.setCategory("electronics");
-		product.setQuantity(3);
-		product.setCondition("new");
-		product.setImgURL("iphone_img");
-		productList.add(product);
-		
-		
-		Product product1 = new Product();
-		product1.setName("galaxyS10");
-		product1.setCategory("electronics");
-		product1.setQuantity(2);
-		product1.setCondition("new");
-		product1.setImgURL("galaxy_img");
-		productList.add(product1);
-		
-		Product product2 = new Product();
-		product2.setName("googlePixle");
-		product2.setCategory("electronics");
-		product2.setQuantity(6);
-		product2.setCondition("new");
-		product2.setImgURL("googlePixle_img");
-		productList.add(product2);
-		
-		admin.setProduct(productList);
-		
-		
-		Admin a=adminService.addProductAndAdmin(admin);
-		return new ResponseEntity<Admin>(a,HttpStatus.OK);
-		
-	}
 	
 	
 }

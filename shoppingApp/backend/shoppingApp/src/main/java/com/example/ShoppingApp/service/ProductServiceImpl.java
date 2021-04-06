@@ -1,5 +1,6 @@
 package com.example.ShoppingApp.service;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -45,7 +46,7 @@ public class ProductServiceImpl implements ProductService{
 
 
 	@Override
-	public boolean addProductFromAdmin(String admin_id, Product product) {
+	public boolean addProductFromAdmin(String admin_id, Product product) throws UnsupportedEncodingException {
 		return productDAO.addProductFromAdmin(admin_id, product);
 	}
 

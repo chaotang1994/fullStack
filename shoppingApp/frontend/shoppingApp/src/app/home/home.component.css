@@ -1,6 +1,5 @@
 div.home{
-    /* background: radial-gradient(ellipse at center, #edf1f5 1%, #14171a 95%);  */
-    background-color: hsl(28, 97%, 43%);
+    background: linear-gradient(to left bottom, hsl(90, 69%, 90%) 0%,hsl(150, 52%, 90%) 100%);
     /* height:calc(100vh); */
     height:auto;
     min-height: 100%;
@@ -13,13 +12,16 @@ div.container{
 
 nav a{
     padding-right:16px;
-    font-family: Georgia, serif;
+    font-family: Georgia, 'Times New Roman', Times, serif;
     color:white;
 }
-
+nav a:hover{
+    cursor:default;
+    color:white;
+}
 .navbar{
-    background-color:sienna;
-    
+    background: linear-gradient(to left bottom, hsl(150, 98%, 40%) 0%, hsl(90, 79%, 62%) 100%);
+  
 }
 /* .active {
     box-shadow: 0 4px 8px 0 rgba(248, 15, 15, 0.945);
@@ -27,12 +29,13 @@ nav a{
 } */
 
 .navbar .navbar-brand{
+    font-family: Georgia, 'Times New Roman', Times, serif;
     color:white;
-    font-family: Georgia, serif;
+    font-size:x-large;
 }
 
 .navbar .navbar-brand:hover{
-    color:rgb(250, 200, 90);
+    color:hsl(61, 82%, 74%);
     transition-duration: 0.6s;
 }
 
@@ -43,7 +46,7 @@ nav a{
 
 .collapse form input{
     width:50%;
-    color: hsl(28, 97%, 43%);
+    color: hsl(88, 100%, 39%);
     
 }
 
@@ -55,13 +58,17 @@ nav a{
 
 .collapse form button{
     font-size:medium;
-    color:white;
-    background-color: hsl(28, 97%, 43%);
+    color:hsl(61, 82%, 74%);
+    background-color: hsl(88, 100%, 39%);
     font-family: Georgia, serif;
+    outline: 0;
+    
 }
+
+
 .collapse form button:hover{
     /* color:rgb(250, 200, 90); */
-    color:rgb(252, 211, 125);
+    color: hsl(61, 82%, 74%);
     transition-duration: 0.6s;
 }
 
@@ -87,7 +94,10 @@ nav a{
 
 .navbar .navbar-nav li a:hover{
     transition-duration: 0.6s;
-    color:rgb(250, 200, 90);
+    color: black;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    cursor:pointer;
+
 }
 /* ---------- nav bar*/
 
@@ -97,6 +107,10 @@ nav a{
     color:rgb(143, 1, 1);
     font-size:80px;
 } */
+
+.text-span{
+    font-weight: bold;
+}
 
 .info{
     padding-left:40px;
@@ -108,25 +122,40 @@ nav a{
     /* Add shadows to create the "card" effect */
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.8);
     transition: 0.3s;
-  }
+    text-align: left;
+}
 
-  .card:hover {
+.card-title{
+    font:bold;
+    font-size: x-large;
+    border-bottom:2px solid gray;
+}
+
+.card:hover {
     box-shadow: 0 16px 16px 0 rgba(0,0,0,0.2);
-  }
+}
 
-  .pagination /deep/ .ngx-pagination .current {
-    background-color:rgba(238, 73, 73, 0.945);
- 
-  }
+.pagination /deep/ .ngx-pagination .current {
+background-color:rgba(238, 73, 73, 0.945);
 
-  .pagination /deep/ .ngx-pagination :hover {
-    background-color:rgba(98, 205, 255, 0.4);
-  }
+}
+
+.pagination /deep/ .ngx-pagination :hover {
+background-color:rgba(98, 205, 255, 0.4);
+}
 
 
 button{
     height: auto;
     border-radius: 2px;
+    border: none;
+    cursor: pointer;
+    margin-bottom:0px;
+    
+}
+
+button:hover{
+    opacity: 0.8;
 }
 
 input.quantity{
@@ -148,4 +177,15 @@ input:disabled::-webkit-inner-spin-button {
 
 input[type=number] {
     -moz-appearance: textfield;
+}
+
+img{
+    height:340px;
+}
+
+ngb-alert{
+    width:75%;
+    text-align: center;
+    margin-left:190px;
+    margin-top:10px;
 }

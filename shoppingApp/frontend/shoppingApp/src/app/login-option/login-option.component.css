@@ -1,7 +1,8 @@
 .main{
     width:100vw;
-    background-color: black;
     height:100vh;
+    background: rgb(131,58,180);
+    background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(120,245,241,1) 0%, rgba(252,176,69,1) 100%);
 }
 
 
@@ -12,10 +13,27 @@
     margin-top:10%;
 }
 
-.Logo{
-    font-size: 250%;
-    color:white;
+.container{
+    padding-top:30px;
+}
+
+span{
+    font-size: 125%;
+    color:#ebe0f7;
     cursor:default;
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.Logo{
+    font-size: 600%;
+    /* color:#457dfc; */
+    color:#ebe0f7;
+    cursor:default;
+    text-align: center;
+    /* font-family:'Times New Roman', serif; */
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    
 }
 
 /* .container .Logo a{
@@ -29,6 +47,5 @@
 
 button{
     border-radius: 12px;
-
 }
 
