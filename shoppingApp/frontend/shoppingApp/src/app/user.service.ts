@@ -29,7 +29,7 @@ export class UserService {
 
 
   UserDetails(id):Observable<any>{
-    return this.http.post(environment.apiUrl+'/printAccountInfo',id);
+    return this.http.post(environment.apiUrl+'/getAccountInfo',id);
   }
 
 

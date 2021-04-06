@@ -193,7 +193,7 @@ public class ShoppingAppApplication implements CommandLineRunner{
 
 	
 	public void printAccountInfo() {
-		Customer a=customerService.printAccountInfo("ctang2316@gmail.com");
+		Customer a=customerService.getAccountInfo("ctang2316@gmail.com");
 		System.out.println("here;;][;[;][  "+a.getAddress());
 	}
 	

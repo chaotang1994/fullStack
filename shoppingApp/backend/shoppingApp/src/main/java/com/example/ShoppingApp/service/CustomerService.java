@@ -8,7 +8,7 @@ public interface CustomerService {
 	
 	public String registerNewCustomer(Customer customer);
 	public String authentication(String username, String password)throws InvalidPasswordOrUsername, EmailNotExits;
-	public Customer printAccountInfo(String accountID);
+	public Customer getAccountInfo(String accountID);
 //	public Customer customerLogin(String email, String password);
 	public Boolean UpdateUser(Customer customer);
 	

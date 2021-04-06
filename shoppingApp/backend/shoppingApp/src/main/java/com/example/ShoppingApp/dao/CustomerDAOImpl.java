@@ -100,7 +100,7 @@ public class CustomerDAOImpl implements CustomerDAO{
 	
 
 	@Override
-	public Customer printAccountInfo(String accountID) {
+	public Customer getAccountInfo(String accountID) {
 //		entityManager.find(Account.class, accountID);
 //		System.out.println("printAccountInfo");
 		Customer customer=null;

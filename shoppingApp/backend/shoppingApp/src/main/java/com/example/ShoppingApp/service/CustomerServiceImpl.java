@@ -37,10 +37,10 @@ public class CustomerServiceImpl implements CustomerService{
 //	}
 
 	@Override
-	public Customer printAccountInfo(String accountID) {
+	public Customer getAccountInfo(String accountID) {
 		// TODO Auto-generated method stub
 		System.out.println("Service");
-		return customerDAO.printAccountInfo(accountID);
+		return customerDAO.getAccountInfo(accountID);
 	}
 
 
