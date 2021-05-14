@@ -136,10 +136,6 @@ public class CustomerDAOImpl implements CustomerDAO{
 		return false;
 	}
 
-	@Override
-	public void emptyShoppingCart() {
-		
-	}
 
 	@Override
 	public String getNameByEmail(String id) {

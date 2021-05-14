@@ -14,7 +14,6 @@ public interface CustomerDAO {
 //	public String changeAllAccountInformation(Account account);//accountId
 //	public Customer customerLogin(String email, String password) throws InvalidPasswordOrUsername;
 	public Customer getAccountInfo(String accountID);
-	public void emptyShoppingCart();
 	public Boolean UpdateUser(Customer customer);
 	public String getNameByEmail(String id);
 	

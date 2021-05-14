@@ -71,31 +71,7 @@ public class AdminDAOImpl implements AdminDAO{
 		return adminEntity.getPassword();
 	}
 	
-//	@Override
-//	public void changeName(String name) {
-//		// TODO Auto-generated method stub
-//		
-//	}
-//
-//
-//
-//	@Override
-//	public Product deleteProduct(Product product) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-//
-//	@Override
-//	public Product updateProduct(Product product) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-//
-//	@Override
-//	public void changePassword(String password) {
-//		// TODO Auto-generated method stub
-//		
-//	}
+
 
 	@Override
 	public ArrayList<Product> getProducts() {
