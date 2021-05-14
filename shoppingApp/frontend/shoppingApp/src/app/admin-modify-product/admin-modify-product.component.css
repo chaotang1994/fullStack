@@ -101,11 +101,12 @@ table.table .button_remove{
 
 
 table.table tr .button:hover {
-    background-color: rgb(250, 200, 90);; /* Green */
+    background-color: rgb(241, 228, 103); /* Green */
     color: rgb(0, 0, 0);
     border: none;
     text-decoration: none;
     border:black;
+    transition: 0.5s
 
 }
 
@@ -136,3 +137,17 @@ table.table .form-control.error {
 table.table td .add {
     display: none;
 } */
+
+button:hover{
+    opacity: 0.6;
+
+}
+
+ngb-alert{
+    margin-top:10px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    background-color:rgb(250, 200, 90);
+    border:rgb(101, 188, 241) solid 2px;
+    color:black;
+}

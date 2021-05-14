@@ -13,6 +13,7 @@ div.main{
     font-size: 250%;
     font-family: Georgia, 'Times New Roman', Times, serif;
     color: Black;
+
 }
 
 .logo span{
@@ -46,14 +47,14 @@ div.span{
 }
 
 div.container{
-    padding-top: 200px;
+    padding-top: 120px;
     width: 30%;
 }
 
 .back_icon{
     width:80px;
     height: 80px;
-    padding-top:20px;
+    padding-top:10px;
     color:rgba(0, 0, 0, 0.884);
 }
 
@@ -61,3 +62,5 @@ svg:hover{
     color:lightskyblue;
     cursor:pointer;
 }
+
+

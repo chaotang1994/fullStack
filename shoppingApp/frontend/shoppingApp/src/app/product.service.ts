@@ -35,9 +35,9 @@ export class ProductService {
     return this.http.post<boolean>(environment.apiUrl+'/removeProductFromAdmin/'+admin_id, product_id);
   }
 
-  removeProductFromUser(product_id:number, user_id:string):Observable<number>{
+  removeProductFromCustomer(product_id:number, user_id:string):Observable<number>{
     // const url = `${environment.apiUrl}/${user_id}/${product_id}`;
-    return this.http.delete<number>(environment.apiUrl+'/removeProductFromUser/'+user_id+'/'+product_id);
+    return this.http.delete<number>(environment.apiUrl+'/removeProductFromCustomer/'+user_id+'/'+product_id);
   }
   
   //AdminModifyProductComponent
@@ -46,12 +46,12 @@ export class ProductService {
   }
 
   //add product from admin account
-  addProductFromAdmin(admin_name:string, product:Product):Observable<boolean>{
-    return this.http.post<boolean>(environment.apiUrl+'/addProductFromAdmin/'+admin_name,product);
+  addProductToAdmin(admin_name:string, product:Product):Observable<boolean>{
+    return this.http.post<boolean>(environment.apiUrl+'/addProductToAdmin/'+admin_name,product);
   }
 
-  updateQuantityFromUser(user_id:string,product:Product):Observable<number>{
-    return this.http.put<number>(environment.apiUrl+'/updateQuantityFromUser/'+user_id,product);
+  updateQuantityFromCustomer(user_id:string,product:Product):Observable<number>{
+    return this.http.put<number>(environment.apiUrl+'/updateQuantityFromCustomer/'+user_id,product);
   }
 
 }

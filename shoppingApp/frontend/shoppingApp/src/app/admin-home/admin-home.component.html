@@ -10,12 +10,12 @@
       <div class="container">
         <div class="row">
 
-            <div class="col-sm-3 col-sm-3 p-4" *ngFor="let product of products;">
-              <div class="card" style="width: 16rem; " >
+            <div class="col-sm-3 col-sm-3 p-4" *ngFor="let product of products | paginate: { itemsPerPage: 8, currentPage: p }">
+              <div class="card mb-3" style="width: 16rem; " >
                 <!-- <img class="card-img-top card-img-top-250 one" src="data:image/png;base64, ${product.image}" alt="{{product.name}}"> -->
                 <img class="card-img-top card-img-top-250 one" src="{{'data:image/png;base64,'+product.imgURL}}" alt="{{product.name}}">
                 <div class="card-body">
-                  <h5 class="card-title">{{product.name}}</h5>
+                  <h5 class="card-title"><span class="Pname">{{product.name}}</span></h5>
                   <p class="card-text">
                     <span class="text-span">Category:</span> {{product.category}} 
                     <br>
@@ -33,7 +33,13 @@
 
             </div>
         </div>
-
+        <pagination-controls 
+        class="pagination"
+        (pageChange)="p = $event"
+        autoHide="true"
+        previousLabel="Previous"
+        nextLabel="Next"
+      ></pagination-controls>
 
 
 

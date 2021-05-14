@@ -18,7 +18,7 @@ public class Product {
 	private String category;
 	private int quantity;
 	private String condition;
-	private int price;
+	private double price;
 	private byte[] imgURL;
 
 	private List<ShoppingCartQuantityEntity> ShoppingCartQuantityEntity = new ArrayList<>();
@@ -26,10 +26,10 @@ public class Product {
 	private AdminEntity adminEntity;
 
 
-	public int getPrice() {
+	public double getPrice() {
 		return price;
 	}
-	public void setPrice(int price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 	public int getId() {

@@ -93,7 +93,7 @@ export class LoginComponent implements OnInit {
     if(error==401 || error==404){
       return "Email or password incorrect";
     }else{
-      return "Is not connect to serve";
+      return "Is not connect to server";
     }
 
   }

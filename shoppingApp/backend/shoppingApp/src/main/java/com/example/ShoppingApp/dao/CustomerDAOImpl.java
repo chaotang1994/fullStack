@@ -6,6 +6,7 @@ import javax.persistence.PersistenceContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 
 import com.example.ShoppingApp.entity.CustomerEntity;
@@ -101,8 +102,7 @@ public class CustomerDAOImpl implements CustomerDAO{
 
 	@Override
 	public Customer getAccountInfo(String accountID) {
-//		entityManager.find(Account.class, accountID);
-//		System.out.println("printAccountInfo");
+
 		Customer customer=null;
 		CustomerEntity customerEntity = entityManager.find(CustomerEntity.class, accountID);
 		if(customerEntity !=null) {
@@ -138,8 +138,14 @@ public class CustomerDAOImpl implements CustomerDAO{
 
 	@Override
 	public void emptyShoppingCart() {
-		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public String getNameByEmail(String id) {
+		CustomerEntity customerEntity= entityManager.find(CustomerEntity.class, id);
+		System.out.println("Name: "+ customerEntity.getFirstName()+" "+ customerEntity.getLastName());
+		return customerEntity.getFirstName()+" "+ customerEntity.getLastName();
 	}
 
 

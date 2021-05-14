@@ -28,13 +28,17 @@ export class UserService {
   }
 
 
-  UserDetails(id):Observable<any>{
+  UserDetails(id:string):Observable<any>{
     return this.http.post(environment.apiUrl+'/getAccountInfo',id);
   }
 
 
   UpdateUser(user:User):Observable<any>{
     return this.http.put(environment.apiUrl+'/updateUser',user);
+  }
+
+  getNameByEmail(id:string):Observable<any>{
+    return this.http.get(environment.apiUrl+'/getNameByEmail/'+id,{responseType: 'text'});
   }
 
   // loadHome(id):Observable<any>{

@@ -24,7 +24,7 @@
 
    
 
-          <div class="card" style="width: 16rem; " >
+          <div class="card" style="width: 16rem; height: 38rem;" >
             <img class="card-img-top card-img-top-250 one" src="{{'data:image/png;base64,'+ product.imgURL}}" alt="{{product.name}}">
                                                                 
             <div class="card-body">
@@ -34,9 +34,12 @@
                 <br>
                 <span class="text-span">CONDITION: </span>{{product.condition}}
                 <br>
+                <span class="text-span">PRICE: </span>{{product.price*product.quantity}}
+                <br>
                 <span class="text-span"><label>QUANTITY:</label></span>
                 <span><input type="number" [(ngModel)]="product.quantity" [disabled]="product.id!==currentID"/></span>
-                
+
+             
                 
               </div>
               <button type="button" class="btn btn-success" *ngIf="product.id!==currentID" (click)="editQuantity(product.id)">Edit</button>

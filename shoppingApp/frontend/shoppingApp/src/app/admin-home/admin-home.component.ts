@@ -18,6 +18,8 @@ export class AdminHomeComponent implements OnInit {
   url:string;
   emptyList:boolean=false;
   serveDisconnected:boolean=false;
+  p:number=1;
+
 
   constructor(
     private productService:ProductService,

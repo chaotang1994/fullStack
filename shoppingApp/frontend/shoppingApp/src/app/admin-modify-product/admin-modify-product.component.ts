@@ -1,6 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import {ProductService} from '../product.service';
 import {Product} from '../product';
+import {NgbAlert} from '@ng-bootstrap/ng-bootstrap';
+
 
 
 @Component({
@@ -17,13 +19,11 @@ export class AdminModifyProductComponent implements OnInit {
   searchProduct:any;
   emptyList:boolean=false
   serveDisconnected:boolean=false;
+  successRemove:boolean=false;
+  successMessage:string;
+  successSave:boolean=false;
+  @ViewChild('selfClosingAlert', {static: false}) selfClosingAlert: NgbAlert;
 
-  // name:string;
-  // category:string;
-  // quantity:number;
-  // condition:string;
-  // price:number;
-  // imgURL:string;
 
   constructor(
     private productService:ProductService
@@ -65,7 +65,10 @@ export class AdminModifyProductComponent implements OnInit {
         if(this.success){
           for(let p=0; p<this.products.length; p++){
             if(this.products[p].id===product_id){
+              this.successMessage=this.products[p].name+" has been removed successfully!!!";
+              this.successRemove=true;
               this.products.splice(p,1);
+              this.timeout();
             }
           }
         }
@@ -76,16 +79,22 @@ export class AdminModifyProductComponent implements OnInit {
   
   }
 
-edit(product:Product):void{
+save(product:Product):void{
   console.log("product quantity: "+product.quantity);
   this.productService.editProductFromAdmin(product,this.admin_id).subscribe(
     success=>{
       this.success=success;
+      if(this.success=true){
+        this.successMessage="Save successfully!!!";
+        this.successSave=true;
+        this.timeout();
+      }
     },
     error=>{
       console.log("error: "+ error);
     }
   )
+  
 }
 
 setMessageStyles() {
@@ -125,6 +134,10 @@ setMessageStyles() {
 
   // }
 
+
+  timeout(){
+    setTimeout(() => this.selfClosingAlert.close(), 6000);
+  }
 
  
 

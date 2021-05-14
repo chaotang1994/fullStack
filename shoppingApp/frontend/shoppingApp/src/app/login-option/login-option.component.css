@@ -33,6 +33,7 @@ span{
     text-align: center;
     /* font-family:'Times New Roman', serif; */
     font-family: Georgia, 'Times New Roman', Times, serif;
+    -webkit-text-stroke: 1px rgb(255, 255, 131); 
     
 }
 

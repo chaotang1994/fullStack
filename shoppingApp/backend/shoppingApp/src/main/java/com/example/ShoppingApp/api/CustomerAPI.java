@@ -36,10 +36,6 @@ public class CustomerAPI {
 			String registeredWithEmailID= customerService.registerNewCustomer(customer);
 			return new ResponseEntity<String>(registeredWithEmailID,HttpStatus.OK);
 		} catch (Exception e) {
-//			if(e.getMessage().contains("Validator")){
-//				throw new ResponseStatusException(HttpStatus.NOT_ACCEPTABLE,environment.getProperty(e.getMessage()));
-//			}
-//			throw new ResponseStatusException(HttpStatus.CONFLICT,environment.getProperty(e.getMessage()));
 			throw new ResponseStatusException(HttpStatus.CONFLICT);
 
 		}
@@ -48,7 +44,6 @@ public class CustomerAPI {
 		
 	}
 	
-
 	
 	@PostMapping(value="/getAccountInfo")//change to get AcccountInfo
 	public ResponseEntity<Customer> getAccountInfo(@RequestBody String id){
@@ -68,7 +63,10 @@ public class CustomerAPI {
 
 	
 
-	
+	@GetMapping(value="/getNameByEmail/{id}")
+	public ResponseEntity<String> getNameByEmail(@PathVariable String id){
+		return new ResponseEntity<String>(customerService.getNameByEmail(id),HttpStatus.OK);
+	}
 
 
 

@@ -44,7 +44,7 @@ public class ProductEntity {
 	private String condition;
 	
 	@Column(name="PRODUCT_PRICE")
-	private int price;
+	private double price;
 	
 	@Lob
 	@Column(name="PRODUCT_IMG",columnDefinition = "LONGBLOB")
@@ -61,10 +61,10 @@ public class ProductEntity {
 	
 	
 
-	public int getPrice() {
+	public double getPrice() {
 		return price;
 	}
-	public void setPrice(int price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 	

@@ -80,7 +80,7 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   removeFromCart(product_id:number){
-    this.productService.removeProductFromUser(product_id,this.id).subscribe(
+    this.productService.removeProductFromCustomer(product_id,this.id).subscribe(
       result=>{
         console.log("remove from cart: "+ result);
         console.log("return id: "+result);
@@ -99,21 +99,28 @@ export class ShoppingCartComponent implements OnInit {
             console.log("remove fail!!!");
           }
 
+          this.total=0;
+          this.getTotal();
+
       }
     );
+   
   }
 
   saveQuantity(product:Product){
     this.currentID=-1;
-    this.productService.updateQuantityFromUser(this.id,product).subscribe(
+    this.productService.updateQuantityFromCustomer(this.id,product).subscribe(
       rep=>{
-        if(rep==product.id){
-          console.log("reponse: "+ rep);
-          this.successSave=true;
-          this.SuccessSaveMessage="Product Quantity Save Successfully!";
-        }
+          if(rep==product.id){
+            console.log("reponse: "+ rep);
+            this.successSave=true;
+            this.SuccessSaveMessage="Product Quantity Save Successfully!";
+          }     
       }
     );
+    this.total=0;
+    this.getTotal();
+
   }
 
   editQuantity(product_id:number){
@@ -133,7 +140,7 @@ export class ShoppingCartComponent implements OnInit {
 
   getTotal(){
     for(let i=0; i<this.products.length; i++){
-      this.total+=this.products[i].price;
+      this.total+=this.products[i].price*this.products[i].quantity;
     }
   }
 

@@ -3,6 +3,7 @@ package com.example.ShoppingApp.service;
 
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import com.example.ShoppingApp.dao.CustomerDAO;
 import com.example.ShoppingApp.exception.EmailNotExits;
@@ -52,6 +53,12 @@ public class CustomerServiceImpl implements CustomerService{
 	
 	public Boolean UpdateUser(Customer customer) {
 		return customerDAO.UpdateUser(customer);
+	}
+
+
+	@Override
+	public String getNameByEmail(String id) {
+		return customerDAO.getNameByEmail(id);
 	}
 
 	

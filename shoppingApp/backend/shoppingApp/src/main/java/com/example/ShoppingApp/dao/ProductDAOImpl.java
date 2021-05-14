@@ -79,35 +79,11 @@ public class ProductDAOImpl implements ProductDAO{
 	}
 	
 	
-	@Override
-	public String updateProductName(String name) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public String updateQuantity(int quantity) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public String updateCategory(String category) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public String updateCondition(String condition) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	
 	@Override
 	public boolean addProductFromAdmin(String admin_name, Product product) throws UnsupportedEncodingException {
 		AdminEntity adminEntity=null;
-//		AdminEntity adminEntity=entityManager.find(AdminEntity.class, admin_name);
 		String jpql = "SELECT a FROM AdminEntity a WHERE a.name = :admin_name";
 		Query query = entityManager.createQuery(jpql);
 		query.setParameter("admin_name", admin_name);
@@ -130,45 +106,12 @@ public class ProductDAOImpl implements ProductDAO{
 		return false;
 	}
 
-//	@Override
-//	public int addProductFromAdmin(int id, List<Product> productList) {
-//		AdminEntity adminEntity=entityManager.find(AdminEntity.class, id);
-//		List<ProductEntity> productEntity=adminEntity.getAdminProduct();
-//		
-//		
-//        for(Product product: productList) {
-//        	ProductEntity productE = new ProductEntity();
-//        	productE.setName(product.getName());
-//        	productE.setCategory(product.getCategory());
-//        	productE.setCondition(product.getCondition());
-//        	productE.setQuantity(product.getQuantity());
-//        	productE.setPrice(product.getPrice());
-//        	productE.setImgURL("".getBytes());
-//        	productE.setAdminEntity(adminEntity);
-//        	productEntity.add(productE);
-//        }
-//        try {
-//			adminEntity.setAdminProduct(productEntity);
-//			entityManager.persist(adminEntity);
-//			return id;
-//
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//		return 0;
-//	}
-	
+
 	
 	@Override
 	public boolean removeProductFromAdmin(Integer product_id, String admin_id){//only one admin account, so just remove product from the only admin account.
-//		AdminEntity adminEntity= new AdminEntity();
 		ProductEntity productEntity=entityManager.find(ProductEntity.class, product_id);
-		
-//		for(ShoppingCartQuantityEntity shoppingCartQuantityEntity :  productEntity.getShoppingCartQuantityEntity()) {
-//			shoppingCartQuantityEntity.setShoppingCartEntity(null);
-//			shoppingCartQuantityEntity.getShoppingCartEntity().setShoppingCartQuantityEntity(null);
-//			entityManager.remove(entityManager.find(ShoppingCartQuantityEntity.class, shoppingCartQuantityEntity.getId()));
-//		}
+
 		if(productEntity!=null) {
 			entityManager.remove(productEntity);
 			return true;

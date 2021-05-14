@@ -8,10 +8,7 @@ import com.example.ShoppingApp.model.Product;
 
 public interface ProductDAO {
 	
-	public String updateProductName(String name);
-	public String updateQuantity(int quantity);
-	public String updateCategory(String category);
-	public String updateCondition(String condition);
+
 	public List<Product> getProductsFromAdmin(String id) throws Exception;
 	public boolean addProductFromAdmin(String admin_name, Product product) throws UnsupportedEncodingException;
 	public List<Product> getProductsFromShoppingCart(String id) throws Exception;

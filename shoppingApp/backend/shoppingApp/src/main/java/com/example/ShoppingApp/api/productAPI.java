@@ -32,8 +32,8 @@ public class productAPI {
 	private ProductService productService;
 	
 	
-	@PostMapping(value="/addProductFromAdmin/{admin_name}")
-	public ResponseEntity<Boolean> addProductFromAdmin(@PathVariable("admin_name") String admin_name, @RequestBody Product product) throws UnsupportedEncodingException{
+	@PostMapping(value="/addProductToAdmin/{admin_name}")
+	public ResponseEntity<Boolean> addProductToAdmin(@PathVariable("admin_name") String admin_name, @RequestBody Product product) throws UnsupportedEncodingException{
 		System.out.println("admin_name: "+ admin_name);
 		System.out.println("product name: "+ product.getName());
 		System.out.println("product quantity: "+ product.getQuantity());
@@ -93,7 +93,7 @@ public class productAPI {
 		}
 	}
 	
-	@DeleteMapping(value="/removeProductFromUser/{id}/{product_id}")
+	@DeleteMapping(value="/removeProductFromCustomer/{id}/{product_id}")
 	@ResponseBody
 	public ResponseEntity<Integer> removeProductFromCustomer(@PathVariable("id")String id, @PathVariable("product_id")int product_id) {
 		int result = productService.removeProductFromCustomer(id, product_id);
@@ -114,8 +114,8 @@ public class productAPI {
 		
 	}
 	
-	@PutMapping(value="/updateQuantityFromUser/{user_id}")
-	public ResponseEntity<Integer> updateQuantityFromUser(@PathVariable("user_id") String user_id,@RequestBody Product product){
+	@PutMapping(value="/updateQuantityFromCustomer/{user_id}")
+	public ResponseEntity<Integer> updateQuantityFromCustomer(@PathVariable("user_id") String user_id,@RequestBody Product product){
 		Integer id=productService.updateQuantityFromUser(user_id, product);
 		return new ResponseEntity<Integer>(id,HttpStatus.OK);
 	}

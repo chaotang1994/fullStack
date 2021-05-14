@@ -8,13 +8,20 @@
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.8);
     transition: 0.3s;
     text-align: left;
-
+    height: 540px;
+    position: relative;
 }
 
 .card-title{
     font:bold;
     font-size: x-large;
     border-bottom:2px solid gray;
+
+}
+
+.card-body{
+    position:absolute;
+    bottom: 0;
 }
 
 .card:hover{
@@ -23,9 +30,12 @@
 
 img{
     height:340px;
-
 }
 
 .text-span{
     font-weight: bold;
+}
+
+.Pname{
+    font-size:30px;
 }

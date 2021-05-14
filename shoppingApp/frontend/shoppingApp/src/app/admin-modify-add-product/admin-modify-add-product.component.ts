@@ -23,8 +23,8 @@ export class AdminModifyAddProductComponent implements OnInit {
   private _success = new Subject<string>();  
   successMessage = '';
   product:Product;
-  Condition:any=['New','Used','Unknow'];
-  Category:any=['Electronic','Apparel','Food'];
+  Condition:any=['New','Used','Unknow','Fresh','Frozen'];
+  Category:any=['Electronic','Apparel','Food','Furniture','Garden'];
 
 
   constructor(
@@ -53,7 +53,7 @@ export class AdminModifyAddProductComponent implements OnInit {
 
   createForm(){
     this.addProductForm=this.formBuilder.group({
-      product_name:['',[Validators.required,Validators.minLength(1)]],
+      product_name:['',[Validators.required,Validators.minLength(1),Validators.maxLength(25)]],
       product_quantity:[1],
       product_price:['',[Validators.required,Validators.min(1)]],
       product_image:['',[Validators.required]],
@@ -143,7 +143,7 @@ export class AdminModifyAddProductComponent implements OnInit {
     base64
     );
 
-    this.productService.addProductFromAdmin(this.admin_id, product).subscribe(
+    this.productService.addProductToAdmin(this.admin_id, product).subscribe(
       res=>{
         console.log("response: "+res);
         window.alert('New Product Added Successfully.')

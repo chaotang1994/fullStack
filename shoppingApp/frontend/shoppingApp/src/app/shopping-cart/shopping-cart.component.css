@@ -10,7 +10,12 @@
     box-shadow: 0 3px 3px 0 rgba(0,0,0,0.8);
     transition: 0.3s;
     text-align: left;
+    position:relative;
+  }
 
+  .card-body{
+      position: absolute;
+      bottom:0;
   }
 .card-title{
     font:bold;

@@ -20,7 +20,8 @@
                 <label for="product_name">Product Name:</label>
                 <input type="text" formControlName="product_name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.product_name.errors }">
                 <div *ngIf="submitted && f.product_name.errors" class="invalid-feedback">
-                    <div *ngIf="f.product_name.errors.required">Name is required</div>
+                    <div *ngIf="f.product_name.errors.required">Name is required and length of Name should less than 30 characters</div>
+                    <div *ngIf="f.product_name.errors.maxlength ">Name of product should less than 24 characters</div>
                 </div>
             </div>
 

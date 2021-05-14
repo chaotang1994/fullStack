@@ -22,6 +22,7 @@ import {debounceTime} from 'rxjs/operators';
 })
 export class HomeComponent implements OnInit {
   id:string
+  customerName:string;
   email:string
   adminID:string='Andy'
   products:Product[]
@@ -35,8 +36,6 @@ export class HomeComponent implements OnInit {
   successAdded:boolean=false;
   successSave:boolean=false;
   message:string="";
-  // shoppingCartList:Product[] = [];
-  // localList:Product[];
   @ViewChild('selfClosingAlert', {static: false}) selfClosingAlert: NgbAlert;
   
 
@@ -53,7 +52,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadHomePage();
-
+    this.getNameByEmail();
   }
 
 
@@ -102,17 +101,6 @@ export class HomeComponent implements OnInit {
             this.successAdded=true;
             this.successMessage=this.message;
             this.timeout();
-            // if(JSON.parse(localStorage.getItem("shoppingCartList"))== null  || JSON.parse(localStorage.getItem("shoppingCartList")) ==='undefined'){
-            //   this.shoppingCartList.push(product);
-            //   localStorage.setItem("shoppingCartList",JSON.stringify(this.shoppingCartList));
-            //   this.localList=JSON.parse(localStorage.getItem("shoppingCartList"));
-            // }else{
-            //   this.shoppingCartList=JSON.parse(localStorage.getItem("shoppingCartList"));
-            //   this.shoppingCartList.push(product);
-            //   localStorage.setItem("shoppingCartList",JSON.stringify(this.shoppingCartList));
-            //   this.localList=JSON.parse(localStorage.getItem("shoppingCartList"));
-            //   console.log(this.localList);
-            // }
           }else{
             console.log("adding to cart error!!!");
           }
@@ -126,6 +114,14 @@ export class HomeComponent implements OnInit {
   }
 
 
+  getNameByEmail(){
+    this.userService.getNameByEmail(this.email).subscribe(
+      data=>{
+        this.customerName=data;
+        console.log("User Name "+this.customerName);
+      }
+    );
+  }
 
   account(){
     this.router.navigate(['/account',this.id]);
